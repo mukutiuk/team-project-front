@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "./static/css/main.10f6d884.css",
+    "main.js": "./static/js/main.45fd7a36.js",
+    "static/media/main.svg": "./static/media/main.b7018f187524c6d0572e.svg",
+    "static/media/image-smo.svg": "./static/media/image-smo.3db5babe62f22e5c153f.svg",
+    "static/media/imageC.png": "./static/media/imageC.2c09dd25c0c623811828.png",
+    "static/media/Inter_18pt-Medium.ttf": "./static/media/Inter_18pt-Medium.c51b145d8cf66a74cc74.ttf",
+    "static/media/Inter_28pt-Regular.ttf": "./static/media/Inter_28pt-Regular.fd012577d3f8e88a8149.ttf",
+    "static/media/Tahoma-Regular-font.ttf": "./static/media/Tahoma-Regular-font.d8d0695069632bde2fbf.ttf",
+    "static/media/TAHOMA-BOLD.TTF": "./static/media/TAHOMA-BOLD.fbb77b26ab6e9d5266ed.TTF",
+    "static/media/loogo.png": "./static/media/loogo.1ef3399887e9f1437709.png",
+    "static/media/Pricing.svg": "./static/media/Pricing.5a34612cdeb6925dac94.svg",
+    "static/media/Fullly.svg": "./static/media/Fullly.7a73b808d02878d531b6.svg",
+    "static/media/Labord.svg": "./static/media/Labord.a2cc266234d46b8c13cc.svg",
+    "static/media/Icons.svg": "./static/media/Icons.7536950a1ab722c14eda.svg",
+    "static/media/plus.svg": "./static/media/plus.01ca7c615369f63fc7ae.svg",
+    "static/media/img1.svg": "./static/media/img1.3574ae59272b88c35a43.svg",
+    "index.html": "./index.html",
+    "static/media/2done.svg": "./static/media/2done.d2bb0eeb77aafff421f9.svg",
+    "static/media/Star1.svg": "./static/media/Star1.4983dc9c3791fd343e3c.svg",
+    "static/media/Star-smol.svg": "./static/media/Star-smol.8fb04088686a5188c1aa.svg",
+    "static/media/Close-dark.svg": "./static/media/Close-dark.5c5c634ca7a1edcaa038.svg",
+    "static/media/close.svg": "./static/media/close.b6f14fc0d0a543901a01.svg",
+    "static/media/done1.svg": "./static/media/done1.32d316a5b2f742cdbbc5.svg",
+    "static/media/arrow.svg": "./static/media/arrow.ff1dffd90c0cb735c7d5.svg",
+    "main.10f6d884.css.map": "./static/css/main.10f6d884.css.map",
+    "main.45fd7a36.js.map": "./static/js/main.45fd7a36.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10f6d884.css",
+    "static/js/main.45fd7a36.js"
+  ]
+}
