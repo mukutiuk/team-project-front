@@ -1,0 +1,102 @@
+@import '../../../utils-scss/fonts.scss';
+@import '../../../utils-scss/variables.scss';
+@import '../../../utils-scss/mixins';
+
+
+.place {
+  padding: 40px 16px 58px;
+  margin: auto;
+
+  @include on-desktop {
+    padding: 75px 0 108px;
+    width: 1080px;
+  }
+
+  &__title {
+    @extend %mont-400;
+
+    font-size: 26px;
+    line-height: 25px;
+    color: #313131;
+
+    @include on-desktop {
+    font-size: 50px;
+
+
+    }
+
+    &--block {
+      text-align: center;
+      margin-bottom: 40px;
+
+      @include on-desktop {
+        margin-bottom: 140px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    margin-bottom: 57px;
+
+    @include on-desktop {
+      margin-bottom: 90px;
+    }
+  }
+
+  &__item {
+    @extend %mont-400;
+
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    height: 24px;
+    gap: 10px;
+    line-height: 25px;
+    color: $color-black;
+    list-style: none;
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      gap: 58px;
+      height: 60px;
+      margin-bottom: 16px;
+    }
+
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__img {
+    background-image: url(../../../../public/img/2done.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+
+    @include on-desktop {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__name {
+    @extend %mont-700;
+
+    font-size: 14px;
+    line-height: 15px;
+    color: $color-black;
+
+    @include on-desktop {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+}

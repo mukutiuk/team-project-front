@@ -1,0 +1,199 @@
+@import '../../../utils-scss/fonts.scss';
+@import '../../../utils-scss/variables.scss';
+@import '../../../utils-scss/mixins';
+
+
+.device {
+  flex-grow: 1;
+  // height: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 52px 16px 43px;
+  position: relative;
+
+  @include on-desktop {
+    max-width: 1340px;
+    border: 2px solid $color-blue;
+    padding: 87px 0 60px 0;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 34px;
+    object-fit: contain;
+
+
+    @include on-desktop {
+      width: 279px;
+      height: 150px;
+    }
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-size: 44px;
+    line-height: 52px;
+    margin-bottom: 20px;
+    color: $color-dark-purple;
+
+    @include on-desktop {
+      font-size: 70px;
+      line-height: 70px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__close {
+    background-image: url(../../../../public/img/Close-dark.svg);
+    background-repeat: no-repeat;
+    background-color: initial;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    @include on-desktop {
+      width: 35px;
+      height: 35px;
+      right: 70px;
+      top: 70px;
+    }
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__description {
+    @extend %mont-400;
+
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-black;
+    margin-bottom: 50px;
+
+    @include on-desktop {
+      text-align: center;
+      width: 784px;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__name {
+    @extend %mont-700;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: $color-black;
+    margin-bottom: 5px;
+
+
+    @include on-desktop {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__placeholder {
+    @extend %mont-400;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: $color-dark-purple;
+    margin-bottom: 25px;
+  }
+
+  &__wraper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+
+    @include on-desktop {
+      gap: 0;
+      width: 880px;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    background-color: $color-blue;
+    border: none;
+    border-radius: 5px;
+    color: $color-white;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      width: 190px;
+    }
+  }
+
+  &__disabled {
+    background-color: #46699980;
+  }
+
+  &__option {
+    width: 360px;
+    height: 229px;
+    margin-bottom: 42px;
+  }
+
+  &__select {
+    @extend %mont-inter-400;
+
+    font-size: 16px;
+    width: 360px;
+    min-height: 45px;
+    border: 1px solid $color-dark-purple;
+    padding: 0 15px 0 21px;
+    border-radius: 5px;
+    line-height: 38px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    width: 15px;
+    height: 8px;
+    background-image: url(../../../../public/img/arrow.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    &--rotate {
+      transform:rotateX(150deg);
+    }
+  }
+
+  &__item {
+    @extend %mont-inter-400;
+
+    font-size: 16px;
+    line-height: 38px;
+    color: $color-grey;
+    list-style: none;
+
+    &:hover {
+      color: $color-dark-purple;
+    }
+
+    &:focus {
+      border-color: red;
+    }
+  }
+}

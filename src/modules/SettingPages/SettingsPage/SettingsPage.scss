@@ -1,0 +1,94 @@
+@import '../../../utils-scss/mixins';
+@import '../../../utils-scss/variables';
+@import '../../../utils-scss/fonts.scss';
+
+.setting {
+  // padding: 0 10px;
+  margin: 0 16px;
+
+  
+  @include on-desktop {
+    padding: 86px 0 105px;
+    width: 1330px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @extend %mont-400;
+
+    font-size: 50px;
+    line-height: 25px;
+    color: $color-black;
+    margin-bottom: 97px;
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: wrap;
+    gap: 25px;
+    margin-bottom: 35px;
+
+    @include on-desktop {
+      gap: 35px;
+      margin-bottom: 105px;
+    }
+  }
+
+  &__wraper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: min-content;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+
+
+    @include on-desktop {
+      width: 103px;
+    }
+  }
+
+  &__num {
+    @extend %mont-400;
+
+    font-size: 21px;
+    line-height: 25px;
+    color: $color-blue;
+
+    @include on-desktop {
+      font-size: 25px;
+      line-height: 40px;
+    }
+  }
+
+  &__close {
+    background-image: url(../../../../public/img/Close-dark.svg);
+    width: 14px;
+    height: 14px;
+    background-size: contain;
+    border: none;
+    transition: all 0.3s;
+    background-color: initial;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @include on-desktop {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__link {
+    @extend %mont-700;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: $color-dark-purple;
+    text-align: center;
+    display: block;
+  }
+}

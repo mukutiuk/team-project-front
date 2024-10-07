@@ -1,0 +1,194 @@
+@import '../../utils-scss/fonts.scss';
+@import '../../utils-scss/variables.scss';
+@import '../../utils-scss/mixins.scss';
+
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 16px;
+
+  @include on-desktop {
+    height: 64px;
+
+    padding: 0 55px;
+    border-bottom: 1px solid #B3B3B3;
+  }
+
+  &__logo {
+    height: 34px;
+    width: 130px;
+    object-fit: contain;
+
+    &--mobaile {
+      @include on-desktop {
+        display: none;
+      }
+    }
+  }
+
+  &__content {
+    padding: 112px 24px;
+    position: fixed;
+    width: 70%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $color-white;
+    z-index: 2;
+
+    @include on-desktop {
+      width: 100%;
+      padding: 0;
+      position: static;
+      background-color: inherit;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__container {
+   
+
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+  }
+
+  &__wraper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 30px;
+
+    }
+  }
+
+  &__phone {
+    @extend %mont-700;
+
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 25px;
+    color: $color-black;
+  }
+
+  &__plan {
+    @extend %mont-700;
+
+    width: 190px;
+    height: 40px;
+    background-color: $color-blue;
+    color: $color-white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  &__button {
+    background-image: url(../../../public/img/Icons.svg);
+    position: absolute;
+    right: 16px;
+    width: 25px;
+    height: 25px;
+    background-color: inherit;
+    border: none;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+}
+
+.open__menu {
+  transition: all 0.3s;
+  transform: translateX(100%);
+
+  @include on-desktop {
+    transform: translateX(0);
+  }
+}
+
+.nav {
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 32px;
+
+  @include on-desktop {
+    justify-content: center;
+    margin: 0;
+  }
+
+  &__list {
+    gap: 30px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+      margin: 0;
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    @extend %mont-inter-400;
+
+    text-decoration: none;
+    color: $color-black;
+    font-size: 15px;
+
+    line-height: 25px;
+  }
+
+  &__close {
+    background-image: url(../../../public/img/Close-dark.svg);
+    width: 25px;
+    height: 25px;
+    background-color: inherit;
+    background-size: contain;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    border: none;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  
+  }
+}
+
+.active {
+  @extend %mont-700;
+  font-weight: 700;
+  color: $color-blue;
+}

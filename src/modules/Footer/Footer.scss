@@ -1,0 +1,91 @@
+@import '../../utils-scss/variables.scss';
+@import '../../utils-scss/fonts.scss';
+@import '../../utils-scss/mixins';
+
+.footer {
+  padding: 106px 36px 15px 25px;
+  background:linear-gradient($color-white, $color-blue);
+  position: relative;
+  // height: 224px;
+
+  @include on-desktop {
+  padding: 120px 136px 41px 45px;
+  }
+
+  &__logo {
+    background-image: url(../../../public/img/loogo.png);
+    width: 221px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include on-desktop {
+      justify-content: space-between;
+      gap: 0;
+    }
+  }
+
+  &__details {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 10px;
+    }
+
+  }
+
+  &__frame {
+    width: 313px;
+
+    @include on-desktop {
+      margin-top: 25px;
+    }
+  }
+
+  &__name {
+    @extend %mont-700;
+
+    font-size: 15px;
+    line-height: 25px;
+    color: $color-white;
+    margin-bottom: 5px
+  }
+
+  &__value {
+    @extend %mont-400;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: $color-white;
+    text-decoration: none;
+
+    &--line {
+      display: block;
+      text-decoration: underline;
+    }
+
+    &--thambtack {
+      // margin-bottom: 30px;
+      display: block;
+
+      @include on-desktop {
+      margin-bottom: 30px;
+
+      }
+    }
+  }
+}

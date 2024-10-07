@@ -1,0 +1,135 @@
+@import '../../../utils-scss/variables.scss';
+@import '../../../utils-scss/mixins';
+@import '../../../utils-scss/fonts.scss';
+
+
+
+.reviews {
+  padding: 20px 16px;
+  background-color: $color-white-smoke;
+  margin-bottom: 24px;
+
+  @include on-desktop {
+    padding: 108px 0 49px;
+    margin-bottom: 110px;
+
+
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__wraper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 50px;
+
+
+    @include on-desktop {
+      margin-bottom: 157px;
+    }
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    color: $color-blue;
+    font-size: 20px;
+    line-height: 24px;
+
+    @include on-desktop {
+      font-size: 30px;
+      line-height: 36px;
+    }
+  }
+
+  &__name {
+    @extend %mont-400;
+
+    font-size: 26px;
+    line-height: 31px;
+    color: $color-black;
+
+    @include on-desktop {
+      
+    font-size: 50px;
+    line-height: 25px;
+
+    }
+  }
+
+  &__block {
+    display: flex;
+    gap: 15px;
+
+    @include on-desktop {
+      gap: 30px;
+    }
+  }
+
+  &__content {
+    gap: 125px;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__frame {
+    margin-bottom: 73px;
+  }
+
+  &__img {
+    width: 100px;
+    height: 100px;
+
+    @include on-desktop {
+      width: 239px;
+      height: 239px;
+    }
+  }
+
+  &__stars {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 25px;
+  }
+
+  &__star {
+    background-image: url(../../../../public/img/Star-smol.svg);
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+    @include on-desktop {
+      background-image: url(../../../../public/img/Star1.svg);
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__description {
+    @extend %mont-400;
+
+    font-size: 18px;
+    line-height: 25px;
+    width: 228px;
+
+    @include on-desktop{
+      width: 280px;
+    }
+  }
+
+  &__more {
+    line-height: 25px;
+    font-size: 18px;
+    color: $color-blue-similar;
+  }
+}

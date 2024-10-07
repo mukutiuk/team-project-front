@@ -1,0 +1,43 @@
+@font-face {
+  font-family: Tahoma-Bold;
+  src:
+  url('../../public/fonts/TAHOMA-BOLD.TTF') format("woff2"),
+}
+
+@font-face {
+  font-family: Tahoma-Regular;
+  src:
+  url('../../public/fonts/Tahoma-Regular-font.ttf') format("woff2"),
+}
+
+@font-face {
+  font-family: Inter-Regular;
+  src:
+  url('../../public/fonts/Inter_28pt-Regular.ttf') format("woff2"),
+}
+
+@font-face {
+  font-family: Inter-Mediun;
+  src:
+  url('../../public/fonts/Inter_18pt-Medium.ttf') format("woff2"),
+}
+
+%mont-inter-400 {
+  font-family: Inter-Regular, sans-serif;
+  font-weight: 400;
+}
+
+%mont-500 {
+  font-family: Inter-Mediun, sans-serif;
+  font-weight: 500;
+}
+
+%mont-700 {
+  font-family: Tahoma-Bold, sans-serif;
+  font-weight: 700;
+}
+
+%mont-400 {
+  font-family: Tahoma-Regular, sans-serif;
+  font-weight: 400;
+}

@@ -1,0 +1,180 @@
+@import '../../../utils-scss/fonts.scss';
+@import '../../../utils-scss/variables.scss';
+@import '../../../utils-scss/mixins';
+
+
+.important {
+  padding: 25px 16px;
+  background-color: $color-blue;
+
+  @include on-desktop {
+    padding: 92px 190px 89px 153px;
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-size: 44px;
+    line-height: 52px;
+    color: $color-white;
+
+    @include on-desktop {
+      font-size: 70px;
+      line-height: 70px;
+    }
+
+    &--block {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+  }
+
+  &__name {
+    @extend %mont-400;
+
+    font-size: 26px;
+    line-height: 31px;
+    color: $color-white;
+    text-align: center;
+    margin-bottom: 20px;
+
+    @include on-desktop {
+    font-size: 50px;
+    margin-bottom: 90px;
+
+
+    }
+  }
+
+  &__wraper {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    align-items: center;
+    margin-bottom: 50px;
+
+
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      margin-bottom: 128px;
+
+    }
+  }
+
+  &__block {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    @include on-desktop {
+      gap: 37px;
+    }
+  }
+
+  &__line {
+    display: block;
+    width: 2px;
+    height: 120px;
+    background-color: $color-white;
+
+    @include on-desktop {
+      height: 183px;
+    }
+  }
+
+  &__description {
+    @extend %mont-400;
+
+    font-size: 16px;
+    line-height: 17px;
+    width: 314px;
+    color: $color-white;
+
+    @include on-desktop {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @include on-desktop {
+      flex-direction: column;
+      gap: 74px;
+
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include on-desktop {
+      justify-content: space-between;
+      flex-direction: row;
+      gap: 0;
+
+    }
+  }
+}
+
+.list {
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    display: block;
+    background-size: contain;
+    width: 47px;
+    height: 47px;
+    background-repeat: no-repeat;
+
+    @include on-desktop {
+      width: 52px;
+      height: 59px;
+    }
+
+    &--one {
+      background-image: url(../../../../public/img/img1.svg);
+    }
+
+    &--two {
+      background-image: url(../../../../public/img/Labord.svg);
+    }
+
+    &--three {
+      background-image: url(../../../../public/img/Fullly.svg);
+    }
+
+    &--four {
+      background-image: url(../../../../public/img/Pricing.svg);
+    }
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-size: 14px;
+    color: $color-white;
+    line-height: 15px;
+
+    @include on-desktop {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+}
