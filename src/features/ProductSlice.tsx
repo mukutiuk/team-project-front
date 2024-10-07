@@ -98,13 +98,13 @@ export const ProductsState = createSlice({
           ...state,
           zipCode: action.payload,
         };
-      })
-      .addCase(addZipCode.fulfilled, (state: ProductState, action: any) => {
-        return {
-          ...state,
-          zipCode: [...state.zipCode, action.payload],
-        };
       });
+    // .addCase(addZipCode.fulfilled, (state: ProductState, action: any) => {
+    //   return {
+    //     ...state,
+    //     zipCode: [...state.zipCode, action.payload],
+    //   };
+    // });
   },
 });
 
