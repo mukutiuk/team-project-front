@@ -1,7 +1,41 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './BookZip.scss';
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
+import * as actionBook from '../../../features/BookSlice';
+import * as productAction from '../../../features/ProductSlice';
+
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 export const BookZip = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(productAction.fetchZipCode());
+  }, [dispatch]);
+
+  const [zipValue, setZipValue] = useState('');
+  const { zipCode } = useAppSelector(state => state.products);
+  const [isZipCode, setIsZipCode] = useState(true);
+  const navigate = useNavigate();
+
+  const addZipBook = () => {
+    const findZipCode = zipCode.find(item => +item.zipCode === +zipValue);
+
+    if (findZipCode) {
+      setIsZipCode(true);
+      dispatch(actionBook.addZip(zipValue));
+      navigate('/book:devise');
+    } else {
+      setIsZipCode(false);
+    }
+  };
+
+  const addValueZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsZipCode(true);
+    setZipValue(e.target.value);
+  };
+
   return (
     <>
       <img className="zip__logo" src="../img/loogo.png" alt="" />
@@ -20,15 +54,31 @@ export const BookZip = () => {
         </p>
         <p className="zip__topic">Zip-code*</p>
 
-        <input placeholder="___" className="zip__input" type="text" />
+        <input
+          value={zipValue}
+          onChange={e => addValueZipCode(e)}
+          placeholder="___"
+          className={classNames('zip__input', {
+            zip__not: !isZipCode,
+          })}
+          type="number"
+        />
+        {!isZipCode && (
+          <p className="zip__error">Sorry we don&apos;t serve this area</p>
+        )}
 
         <div className="zip__wraper">
-          <Link to="../" className="zip__button zip__disabled">
+          <Link to="../" className="zip__button">
             Back
           </Link>
-          <Link className="zip__button" to="/book:devise">
+          <button
+            onClick={addZipBook}
+            className={classNames('zip__button', {
+              zip__disabled: !zipValue,
+            })}
+          >
             Next
-          </Link>
+          </button>
         </div>
       </section>
     </>

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './FrequentlyAsked.scss';
 
 export const FrequentlyAsked = () => {
@@ -63,8 +64,12 @@ export const FrequentlyAsked = () => {
         </div>
 
         <div className="question__buttons">
-          <button className="question__button">Schedule</button>
-          <button className="question__contact">Text Us</button>
+          <NavLink className="question__button" to="/book:zip">
+            Schedule
+          </NavLink>
+          {/* <NavLink className="question__contact" to={''}>
+            Text Us
+          </NavLink> */}
         </div>
       </div>
     </section>

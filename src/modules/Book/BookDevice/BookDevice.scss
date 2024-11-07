@@ -14,7 +14,7 @@
   position: relative;
 
   @include on-desktop {
-    max-width: 1340px;
+    width: 1340px;
     border: 2px solid $color-blue;
     padding: 87px 0 60px 0;
   }
@@ -137,6 +137,10 @@
     justify-content: center;
     align-items: center;
 
+    &:hover {
+      border: 1px solid #101F29
+    }
+
     @include on-desktop {
       width: 190px;
     }
@@ -144,6 +148,7 @@
 
   &__disabled {
     background-color: #46699980;
+    cursor: default;
   }
 
   &__option {
@@ -164,6 +169,14 @@
     line-height: 38px;
     position: relative;
     cursor: pointer;
+
+    &:hover {
+      border: 2px solid #1c557e;
+    }
+
+    &-active {
+      border: 2px solid #1c557e;
+    }
   }
 
   &__arrow {
@@ -190,10 +203,6 @@
 
     &:hover {
       color: $color-dark-purple;
-    }
-
-    &:focus {
-      border-color: red;
     }
   }
 }

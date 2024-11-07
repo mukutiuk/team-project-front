@@ -1,9 +1,14 @@
 import './SelectDevice.scss';
-import { useAppSelector } from '../../../utils/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
 import { NavLink } from 'react-router-dom';
+import * as actionProduct from '../../../features/ProductSlice';
 
 export const SelectDevice = () => {
   const { content } = useAppSelector(state => state.products);
+  const dispatch = useAppDispatch();
+  const choseDevice = (id: number) => {
+    dispatch(actionProduct.getProductDetailsData(id));
+  };
 
   return (
     <div className="select">
@@ -12,12 +17,16 @@ export const SelectDevice = () => {
         Select the device that needs repair
       </h1>
       <div className="select__container">
-        {content.map(item => (
+        {content?.map(item => (
           <div key={item.id} className="select__wraper">
-            <NavLink className="select__link" to={`/services/${item.name}`}>
+            <NavLink
+              onClick={() => choseDevice(item.id)}
+              className="select__link"
+              to={`/services/${item?.name}`}
+            >
               <img
                 className="select__img"
-                src={`http://localhost:8082/api${item.imageUrl}`}
+                src={`http://localhost:8082/api${item?.imageUrl}`}
                 alt="img"
               />
             </NavLink>

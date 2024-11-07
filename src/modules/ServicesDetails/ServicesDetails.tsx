@@ -1,25 +1,50 @@
+import { useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import './ServicesDetails.scss';
+import { useEffect } from 'react';
+import * as productAction from '../../features/ProductSlice';
 
 export const ServicesDetails = () => {
+  const { productDetail, content } = useAppSelector(state => state.products);
+  const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const findName = pathname.split('/');
+    let name = findName[findName.length - 1];
+
+    if (name.includes('%20')) {
+      name = name.replace('%20', ' ');
+    }
+
+    const findProduct = content.find(item => item.name === name);
+
+    if (findProduct) {
+      dispatch(productAction.getProductDetailsData(findProduct?.id));
+    }
+  }, [pathname, dispatch, content]);
+
+  const nameProduct = content.find(item => item.id === productDetail?.id);
+
   return (
     <section className="services">
-      <h1 className="services__title">Types of Refrigerators we repair</h1>
+      <h1 className="services__title">
+        Types of {nameProduct?.name} we repair
+      </h1>
       <div className="services__container">
-        <div className="services__block">
-          <img className="services__img" src="../img/refrigerator.png" alt="" />
-          <span className="services__name">Top Freezer</span>
-        </div>
+        {productDetail?.deviceSubtypes.map(item => (
+          <div key={item.id} className="services__block">
+            <img
+              className="services__img"
+              src={`http://localhost:8082/api${item?.imageUrl}`}
+              alt="img"
+            />
+            <span className="services__name">{item.name}</span>
+          </div>
+        ))}
       </div>
 
-      <p className="services__description">
-        Refrigerator is an essential part of every household to keep edibles
-        fresh and fit. You might get panicked when your kitchen affairs are
-        disrupted by a broken fridge. However, there’s nothing to worry about
-        when fast and reliable repair services are just a phone call away. Maple
-        leaf repair services have well trained technicians alongwith high
-        quality, state of the art tools to assist you with every
-        refrigerator-related issue.
-      </p>
+      <p className="services__description">{productDetail?.description}</p>
       <div className="services__frame">
         <div className="services__wraper">
           <img

@@ -120,6 +120,12 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid #101f29;
+      transform: scale(1.01);
+    }
 
     @include on-desktop {
       margin-bottom: 146px;

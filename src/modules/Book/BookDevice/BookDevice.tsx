@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './BookDevice.scss';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
+import * as productAction from '../../../features/ProductSlice';
+import * as bookAction from '../../../features/BookSlice';
 
 export const BookDevice = () => {
   const [isSelector, setIsSelector] = useState(false);
   const [selectValue, setSelectValue] = useState('');
+  const { content } = useAppSelector(state => state.products);
 
-  const getSelectValue = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(productAction.fetchProduct());
+  }, [dispatch]);
+
+  const getSelectValue = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    id: number,
+  ) => {
     setSelectValue(e.currentTarget.innerText);
+    dispatch(bookAction.addDevice(id.toFixed()));
   };
 
   return (
@@ -33,7 +48,9 @@ export const BookDevice = () => {
               setIsSelector(false);
             }}
             onClick={() => setIsSelector(prev => !prev)}
-            className="device__select"
+            className={classNames('device__select', {
+              'device__select-active': isSelector,
+            })}
           >
             {!isSelector && selectValue}
             {isSelector ? (
@@ -43,31 +60,30 @@ export const BookDevice = () => {
             )}
             {isSelector && (
               <ul className="device__list">
-                <li className="device__item" onClick={getSelectValue}>
-                  Dryer-Electric
-                </li>
-                <li className="device__item" onClick={getSelectValue}>
-                  Washer
-                </li>
-                <li className="device__item" onClick={getSelectValue}>
-                  Ice Machine
-                </li>
-                <li className="device__item" onClick={getSelectValue}>
-                  Range
-                </li>
-                <li className="device__item" onClick={getSelectValue}>
-                  Cooktop
-                </li>
+                {content.map(item => (
+                  <li
+                    key={item.id}
+                    className="device__item"
+                    onClick={e => getSelectValue(e, item.id)}
+                  >
+                    {item.name}
+                  </li>
+                ))}
               </ul>
             )}
           </div>
         </div>
 
         <div className="device__wraper">
-          <Link to="/book:zip" className="device__button device__disabled">
+          <Link to="/book:zip" className="device__button">
             Back
           </Link>
-          <Link to="/book:logIn" className="device__button">
+          <Link
+            to={selectValue ? '/book:logIn' : ''}
+            className={classNames('device__button', {
+              device__disabled: !selectValue,
+            })}
+          >
             Next
           </Link>
         </div>

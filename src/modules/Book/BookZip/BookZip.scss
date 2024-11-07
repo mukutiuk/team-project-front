@@ -14,7 +14,7 @@
   position: relative;
 
   @include on-desktop {
-    max-width: 1340px;
+    width: 1340px;
     border: 2px solid $color-blue;
     padding: 87px 0 60px 0;
   }
@@ -70,6 +70,15 @@
     &:hover {
       transform: scale(1.03);
     }
+  }
+
+  &__error {
+    @extend %mont-400;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: #d71616;
+    margin-bottom: 165px;
   }
 
   &__description {
@@ -128,8 +137,19 @@
     border-radius: 5px;
     padding-left: 21px;
     font-size: 16px;
-    border-color: $color-grey;
+    border-color: #1C557E;
     margin-bottom: 200px;
+    outline: none;
+
+    &:focus {
+      border: 2px solid #1c557e;
+    }
+  }
+
+  &__not {
+    border: 2px solid #d71616;
+    margin-bottom: 10px;
+
   }
 
   &__wraper {
@@ -159,6 +179,11 @@
     justify-content: center;
     align-items: center;
 
+
+    &:hover {
+      border: 1px solid #101F29
+    }
+
     @include on-desktop {
       width: 190px;
     }
@@ -166,5 +191,6 @@
 
   &__disabled {
     background-color: #46699980;
+    cursor: default;
   }
 }

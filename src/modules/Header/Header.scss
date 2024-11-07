@@ -13,7 +13,6 @@
 
   @include on-desktop {
     height: 64px;
-
     padding: 0 55px;
     border-bottom: 1px solid #B3B3B3;
   }
@@ -51,9 +50,6 @@
   }
 
   &__container {
-   
-
-
     @include on-desktop {
       display: flex;
       align-items: center;
@@ -95,6 +91,13 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s;
+
+
+    &:hover {
+      transform: scale(1.01);
+      border: 1px solid #101F29
+    }
   }
 
   &__button {
@@ -109,11 +112,301 @@
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.01);
     }
 
     @include on-desktop {
       display: none;
+    }
+  } 
+
+  &__user {
+    display: block;
+    background-image: url(../../../public/img/user.svg);
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+  }
+}
+
+.login {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0F0F1033 !important;
+  height: 100vh;
+  z-index: 12;
+  
+  &__container {
+    position: absolute;
+    width: 100%;
+    z-index: 22;
+    background-color: $color-white;
+    padding: 31px 16px;
+    height: 100vh;
+
+    @include on-desktop {
+      width: 750px;
+      height: 945px;
+      // padding: 50px 0 50px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &__header {
+    @extend %mont-700;
+
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 59px;
+    color: $color-black;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    // gap: 45px;
+    margin-bottom: 40px;
+
+    @include on-desktop {
+      margin-bottom: 70px;
+    }
+  }
+
+  &__name {
+    @extend %mont-700;
+
+    font-size: 15px;
+    line-height: 25px;
+    color: #3e454e;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+
+    &--password {
+      margin-bottom: 40px;
+
+      @include on-desktop {
+        margin-bottom: 59px;
+      }
+    }
+
+    @include on-desktop {
+      margin-bottom: 28px;
+    }
+  }
+
+  &__input {
+    height: 57px;
+    width: 100%;
+    border: 1px solid #a7aeb6;
+    border-radius: 15px;
+    padding-left: 20px;
+    outline: none;
+
+    @extend %mont-inter-400;
+
+    font-size: 16px;
+    line-height: 38px;
+    color: #a7aeb6;
+
+    @include on-desktop {
+      width: 455px;
+    }
+  }
+
+  &__forgot {
+    @extend %mont-700;
+
+    color: #0d5ba5;
+    font-size: 12px;
+    text-decoration: underline;
+    line-height: 25px;
+    cursor: pointer;
+   
+  }
+
+  &__log {
+    @extend %mont-700;
+
+    font-size: 16px;
+    line-height: 25px;
+    border: none;
+    height: 50px;
+    width: 100;
+    background-color: $color-blue;
+    color: $color-white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.01);
+      border: 1px solid #101F29
+    }
+
+    @include on-desktop {
+      width: 455px;
+    }
+  }
+
+  &__line {
+    width: 149px;
+    border-bottom: 1px solid #797575;
+
+    @include on-desktop {
+      width: 281px;
+    }
+  }
+
+  &__error {
+    @extend %mont-400;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: #D71616;
+    margin-bottom: 5px;
+  }
+
+  &__wraper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+
+    @include on-desktop {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__text {
+    // @extend %mo
+    font-size: 28px;
+    line-height: 35px;
+    color: #3e454e;
+  }
+
+  &__button {
+    width: 100%;
+    height: 57px;
+    border: 1px solid $color-blue;
+    background-color: initial;
+    border-radius: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 23px;
+    text-decoration: none;
+    transition: border 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    @include on-desktop {
+      width: 400px;
+
+    }
+  }
+
+  &__img {
+    background-image:url(../../../public/img/imgGoogle.svg);
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    left: 59px;
+    background-repeat: no-repeat;
+
+    &--facebook {
+      background-image:url(../../../public/img/imgfasebook.svg);
+    }
+
+    &--apple {
+      background-image:url(../../../public/img/imgApple.svg);
+    }
+
+    @include on-desktop {
+      left: 69px;
+    }
+  }
+
+  &__description {
+    @extend %mont-niramit-400;
+
+    font-size: 18px;
+    line-height: 30px;
+    color: $color-blue;
+  }
+
+  &__blok {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__ask {
+    @extend %mont-400;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: $color-black;
+  }
+
+  &__logIn {
+    @extend %mont-700;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: #10406c;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+
+  &__close {
+    background-image: url(../../../public/img/Close-dark.svg);
+    width: 24px;
+    height: 24px;
+    background-position: center;
+    background-color: initial;
+    border: none;
+    position: absolute;
+    top: 23px;
+    right: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    @include on-desktop {
+      width: 32px;
+      height: 34px;
+      top: 36px;
+      right: 50px;
     }
   }
 }
@@ -159,7 +452,6 @@
     text-decoration: none;
     color: $color-black;
     font-size: 15px;
-
     line-height: 25px;
   }
 
@@ -177,13 +469,12 @@
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.01);
     }
 
     @include on-desktop {
       display: none;
     }
-  
   }
 }
 
@@ -191,4 +482,13 @@
   @extend %mont-700;
   font-weight: 700;
   color: $color-blue;
+}
+
+.sha {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100vh;
+  background-color: #0F0F1033;
 }

@@ -17,6 +17,12 @@
 }
 
 @font-face {
+  font-family: Niramit-Regular;
+  src:
+  url('../../public/fonts/Niramit-Regular.ttf') format("woff2"),
+}
+
+@font-face {
   font-family: Inter-Mediun;
   src:
   url('../../public/fonts/Inter_18pt-Medium.ttf') format("woff2"),
@@ -24,6 +30,11 @@
 
 %mont-inter-400 {
   font-family: Inter-Regular, sans-serif;
+  font-weight: 400;
+}
+
+%mont-niramit-400 {
+  font-family: Niramit-Regular, sans-serif;
   font-weight: 400;
 }
 

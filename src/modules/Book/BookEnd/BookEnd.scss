@@ -1,0 +1,95 @@
+@import '../../../utils-scss/mixins';
+@import '../../../utils-scss/fonts.scss';
+@import '../../../utils-scss/variables';
+
+.end {
+  // height: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 52px 16px 43px;
+  position: relative;
+  margin-bottom: 80px;
+  flex-grow: 1;
+
+
+  @include on-desktop {
+    width: 1340px;
+    border: 2px solid $color-blue;
+    padding: 154px 0 60px 0;
+  }
+
+  &__logo {
+    width: 130px;
+    height: 34px;
+    object-fit: contain;
+
+
+    @include on-desktop {
+      width: 279px;
+      height: 150px;
+    }
+  }
+
+  &__close {
+    background-image: url(../../../../public/img/Close-dark.svg);
+    background-repeat: no-repeat;
+    background-color: initial;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    @include on-desktop {
+      width: 35px;
+      height: 35px;
+      right: 70px;
+      top: 70px;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__img {
+    width: 174px;
+    height: 174px;
+    background-image: url(../../../../public/img/done.png);
+    margin-bottom: 39px;
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-size: 44px;
+    line-height: 52px;
+    color: $color-dark-purple;
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      font-size: 70px;
+      line-height: 70px;
+    }
+  }
+
+  &__status {
+    @extend %mont-400;
+
+    font-size: 25px;
+    line-height: 40px;
+    color: $color-dark-purple;
+    text-align: center;
+
+    @include on-desktop {
+      font-size: 21px;
+      line-height: 25px;
+    }
+  }
+}

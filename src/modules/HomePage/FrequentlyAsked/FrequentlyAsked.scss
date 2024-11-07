@@ -153,6 +153,16 @@
     color: $color-white;
     border: none;
     margin-right: 40px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+      border: 1px solid #101f29;
+    }
 
     @include on-desktop {
       width: 190px;
@@ -172,6 +182,13 @@
     border: 2px solid $color-blue;
     width: 100%;
     height: 45px;
+    
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+      border: 2px solid #101f29;
+    }
 
     @include on-desktop {
       width: 190px;

@@ -1,11 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../utils/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
 import './ServicesPage.scss';
+import * as actionProduct from '../../features/ProductSlice';
 
 export const ServicePage = () => {
   const { content } = useAppSelector(state => state.products);
+  const dispatch = useAppDispatch();
+  const choseDevice = (id: number) => {
+    dispatch(actionProduct.getProductDetailsData(id));
+  };
 
   const settings = {
     dots: true,
@@ -30,6 +35,7 @@ export const ServicePage = () => {
         <Slider {...settings}>
           {content.map(item => (
             <NavLink
+              onClick={() => choseDevice(item.id)}
               key={item.id}
               className="service__link"
               to={`/services/${item.name}`}

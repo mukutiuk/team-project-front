@@ -16,6 +16,12 @@ import { ServicesDetails } from './modules/ServicesDetails';
 import { TextUs } from './modules/TextUS';
 import { SettingsPage } from './modules/SettingPages/SettingsPage';
 import { AddZipCod } from './modules/SettingPages/AddZipCod';
+import { ChoseSetting } from './modules/SettingPages/ChoseSetting';
+import { ChoseUserPage } from './modules/User/ChoseUserPage';
+import { UserPage } from './modules/User/UserPage';
+import { OrderPage } from './modules/User/OrderPage/OrderPage';
+import { BookEnd } from './modules/Book/BookEnd';
+import { ProtectedRoute } from './modules/SettingPages/ProtectedRoute';
 
 export const Root = () => {
   return (
@@ -25,27 +31,35 @@ export const Root = () => {
           <Route path="/" element={<App />}>
             <Route path="/">
               <Route index element={<HomePage />} />
+              <Route path="/user">
+                <Route index element={<ChoseUserPage />} />
+                <Route path="/user/profile" element={<UserPage />} />
+                <Route path="/user/orders" element={<OrderPage />} />
+              </Route>
             </Route>
             <Route path="/whyUs" element={<WhyUs />} />
-            <Route path="/settings">
-              <Route index element={<SettingsPage />} />
-              <Route path=":addZip" element={<AddZipCod />} />
-            </Route>
-            <Route path="/services">
-              <Route index element={<ServicePage />} />
-              {/* <Route path=":textUs" element={<TextUs />} /> */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/settings">
+                <Route index element={<ChoseSetting />} />
+                <Route path="/settings/zipCode" element={<SettingsPage />} />
 
-              <Route path=":productName" element={<ServicesDetails />} />
+                <Route path="/settings/addZip" element={<AddZipCod />} />
+              </Route>
             </Route>
             <Route path="/services">
               <Route index element={<ServicePage />} />
-              <Route path=":textUs" element={<TextUs />} />
+              <Route path="/services/textUs" element={<TextUs />} />
+              <Route
+                path="/services:productName"
+                element={<ServicesDetails />}
+              />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="/book:zip" element={<BookZip />} />
           <Route path="/book:devise" element={<BookDevice />} />
           <Route path="/book:logIn" element={<BookForm />} />
+          <Route path="/book:successfully" element={<BookEnd />} />
         </Routes>
         <Footer />
       </Provider>

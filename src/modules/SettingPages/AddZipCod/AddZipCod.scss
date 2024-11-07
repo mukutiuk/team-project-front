@@ -3,19 +3,34 @@
 @import '../../../utils-scss/variables';
 
 .code {
-  padding: 105px 0 0 58px;
+  padding: 21px 16px 0;
+  flex-grow: 1;
+  height: min-content;
+  @include on-desktop {
+    padding: 105px 0 0 58px;
+  }
+
   &__title {
     @extend %mont-400;
 
-    font-size: 50px;
-    line-height: 25px;
+    font-size: 26px;
+    line-height: 31px;
     color: $color-black;
-    margin-bottom: 55px;
+    margin-bottom: 90px;
+
+    @include on-desktop {
+      font-size: 50px;
+      line-height: 25px;
+      margin-bottom: 55px;
+    }
   }
 
   &__wraper {
     margin: 0 auto;
-    width: min-content;
+
+    @include on-desktop {
+      width: min-content;
+    }
   }
 
   &__name {
@@ -28,17 +43,21 @@
   }
 
   &__input {
-    width: 350px;
+    width: 100%;
     height: 45px;
     border: 1px solid  #888383;
     padding-left: 21px;
-
     @extend %mont-400;
 
     font-size: 18px;
     line-height: 38px;
     color: $color-black;
-    margin-bottom: 55px;
+    margin-bottom: 15px;
+
+    @include on-desktop {
+      width: 350px;
+      margin-bottom: 55px;
+    }
   }
 
   &__button {
@@ -46,7 +65,7 @@
 
     font-size: 18px;
     line-height: 25px;
-    width: 350px;
+    width: 100%;
     height: 50px;
     color: $color-white;
     border-radius: 5px;
@@ -57,6 +76,10 @@
 
     &:hover {
       transform: scale(1.03);
+    }
+
+    @include on-desktop {
+      width: 350px;
     }
   }
 }

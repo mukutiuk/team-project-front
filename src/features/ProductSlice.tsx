@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addZipCode, getProduct, getZipCode } from '../utils/fetchClient';
+import {
+  addZipCode,
+  deleteZipCode,
+  getDetailProduct,
+  getProduct,
+  getZipCode,
+} from '../utils/fetchClient';
 
 export interface Product {
   id: number;
@@ -7,19 +13,10 @@ export interface Product {
   imageUrl: string;
 }
 
-export interface Sort {
-  empty: boolean;
-  unsorted: boolean;
-  sorted: boolean;
-}
-
-export interface Pageable {
-  pageNumber: number;
-  pageSize: number;
-  sort: Sort;
-  offset: number;
-  unpaged: boolean;
-  paged: boolean;
+export interface ProductDetail {
+  id: number;
+  description: string;
+  deviceSubtypes: Product[];
 }
 
 export interface Zip {
@@ -28,30 +25,14 @@ export interface Zip {
 
 export interface ProductState {
   zipCode: Zip[];
-  totalPages: number;
-  totalElements: number;
-  size: number;
   content: Product[];
-  number: number;
-  // sort: Sort;
-  // pageable: Pageable;
-  // numberOfElements: number;
-  // first: boolean;
-  // last: boolean;
-  // empty: boolean;
+  productDetail: ProductDetail | null;
 }
 
 const initialState: ProductState = {
   zipCode: [],
-  totalPages: 1,
-  totalElements: 5,
-  size: 20,
   content: [],
-  number: 0,
-  // numberOfElements: 5,
-  // first: true,
-  // last: true,
-  // empty: false,
+  productDetail: null,
 };
 
 export const fetchProduct = createAsyncThunk('product/fetch', () => {
@@ -64,12 +45,22 @@ export const fetchZipCode = createAsyncThunk('zip/fetch', () => {
 
 export const fetchAddZipCode = createAsyncThunk(
   'zipAdd/fetch',
-  async (value: number, { rejectWithValue }) => {
-    try {
-      return await addZipCode(value);
-    } catch (error) {
-      return rejectWithValue(error);
-    }
+  (value: string) => {
+    return addZipCode(value);
+  },
+);
+
+export const getProductDetailsData = createAsyncThunk(
+  'details/featch',
+  (id: number) => {
+    return getDetailProduct(id);
+  },
+);
+
+export const fetchDeleteZipCode = createAsyncThunk(
+  'zipDelete/fetch',
+  (value: string) => {
+    return deleteZipCode(value);
   },
 );
 
@@ -90,7 +81,7 @@ export const ProductsState = createSlice({
       .addCase(fetchProduct.fulfilled, (state: ProductState, action: any) => {
         return {
           ...state,
-          content: action.payload.content,
+          content: action.payload?.content,
         };
       })
       .addCase(fetchZipCode.fulfilled, (state: ProductState, action: any) => {
@@ -98,17 +89,38 @@ export const ProductsState = createSlice({
           ...state,
           zipCode: action.payload,
         };
-      });
-    // .addCase(addZipCode.fulfilled, (state: ProductState, action: any) => {
-    //   return {
-    //     ...state,
-    //     zipCode: [...state.zipCode, action.payload],
-    //   };
-    // });
+      })
+      .addCase(
+        fetchAddZipCode.fulfilled,
+        (state: ProductState, action: any) => {
+          return {
+            ...state,
+            zipCode: [...state.zipCode, action.payload],
+          };
+        },
+      )
+      .addCase(
+        fetchDeleteZipCode.fulfilled,
+        (state: ProductState, action: any) => {
+          return {
+            ...state,
+            zipCode: state.zipCode.filter(
+              item => item.zipCode !== action.payload,
+            ),
+          };
+        },
+      )
+      .addCase(
+        getProductDetailsData.fulfilled,
+        (state: ProductState, action: any) => {
+          return {
+            ...state,
+            productDetail: action.payload,
+          };
+        },
+      );
   },
 });
-
-// console.log()
 
 export default ProductsState.reducer;
 export const { deleteZipcode } = ProductsState.actions;

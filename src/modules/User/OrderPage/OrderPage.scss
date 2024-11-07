@@ -1,0 +1,83 @@
+@import '../../../utils-scss/mixins';
+@import '../../../utils-scss/variables';
+@import '../../../utils-scss/fonts.scss';
+
+
+.order {
+  width: 1280px;
+  margin: 0 auto;
+  padding-top: 46px;
+
+  &__container {
+
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-size: 44px;
+    line-height: 52px;
+    color: $color-dark-purple;
+    margin-bottom: 40px;
+  }
+
+  &__block {
+    width: 1280px;
+    height: 212px;
+    border:1px solid #087713;
+    padding: 28px 48px 34px 32px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__frame {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  &__content {
+    width: 235px;
+    display: flex;
+    gap: 32px;
+  }
+
+  &__value {
+    @extend %mont-700;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: $color-dark-purple;
+  }
+
+  &__description {
+    @extend %mont-400;
+
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-black;
+  }
+
+  &__rules {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__data {
+    @extend %mont-700;
+
+    font-size: 14px;
+    line-height: 15px;
+    color: $color-black;
+    text-align: end
+  }
+
+  &__ask {
+    @extend %mont-700;
+
+    font-size: 18px;
+    line-height: 25px;
+    color: $color-blue;
+  }
+}

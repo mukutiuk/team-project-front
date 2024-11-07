@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../utils/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
 import './SettingsPage.scss';
 import * as productAction from '../../../features/ProductSlice';
 
@@ -7,10 +7,11 @@ export const SettingsPage = () => {
   const { zipCode } = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
 
-  const deleteZipCode = (value: number) => {
+  const deleteZipCode = (value: productAction.Zip) => {
     // eslint-disable-next-line no-console
     console.log(value);
-    dispatch(productAction.deleteZipcode(value));
+    dispatch(productAction.deleteZipcode(value.zipCode));
+    dispatch(productAction.fetchDeleteZipCode(value.zipCode.toString()));
   };
 
   return (
@@ -21,7 +22,7 @@ export const SettingsPage = () => {
           <div key={item.zipCode} className="setting__wraper">
             <h3 className="setting__num">{item.zipCode}</h3>
             <button
-              onClick={() => deleteZipCode(item.zipCode)}
+              onClick={() => deleteZipCode(item)}
               className="setting__close"
             ></button>
           </div>

@@ -32,6 +32,13 @@
     }
   }
 
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 70px;
+  }
+
   &__block {
     width: 357px;
     height: 370px;
@@ -48,6 +55,7 @@
   &__img {
     width: 100px;
     height: 100px;
+    object-fit: contain;
 
     @include on-desktop {
       width: 239px;

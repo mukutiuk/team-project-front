@@ -6,14 +6,14 @@ export const Main = () => {
   const [isOpenCupon, setIsOpenCupon] = useState(false);
   const body = document.querySelector('#menu');
 
-  const openCupon = () => {
-    setIsOpenCupon(true);
+  // const openCupon = () => {
+  //   setIsOpenCupon(true);
 
-    if (body) {
-      body.classList.add('body');
-      body.setAttribute('id', 'menu');
-    }
-  };
+  //   if (body) {
+  //     body.classList.add('body');
+  //     body.setAttribute('id', 'menu');
+  //   }
+  // };
 
   const closeCupon = () => {
     setIsOpenCupon(false);
@@ -24,7 +24,7 @@ export const Main = () => {
   };
 
   // eslint-disable-next-line no-console
-  console.log(openCupon);
+  // console.log(openCupon);
 
   return (
     <section className="main">

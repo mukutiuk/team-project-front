@@ -76,9 +76,11 @@
     transition: all 0.3s;
     // order: 6;
     margin-top: 100px;
+    transition: all 0.3s;
 
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.01);
+      border: 1px solid #101f29;
     }
 
     @include on-desktop {
@@ -89,9 +91,11 @@
   }
 
   &__slider {
+    overflow: hidden;
     max-width: 650px;
     // order: 8;
     height: 427px;
+    // margin: 0 auto;
 
     @include on-desktop {
       width: 650px;
