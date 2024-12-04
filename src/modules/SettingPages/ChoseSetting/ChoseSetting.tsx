@@ -7,7 +7,7 @@ export const ChoseSetting = () => {
       <NavLink className="chose__button" to="/settings/zipCode">
         Zip Code
       </NavLink>
-      <NavLink className="chose__button" to={''}>
+      <NavLink className="chose__button" to="/settings/orders">
         Orders
       </NavLink>
     </div>

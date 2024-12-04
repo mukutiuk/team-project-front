@@ -17,7 +17,11 @@ export const BookForm = () => {
   const navigate = useNavigate();
 
   const isDisablet =
-    nameValue && lastNameValue && emailValue && adresValue && phoneNumber;
+    nameValue.trim() &&
+    lastNameValue.trim() &&
+    emailValue.trim() &&
+    adresValue.trim() &&
+    phoneNumber.trim();
 
   const sendDate = () => {
     dispatch(
@@ -142,11 +146,10 @@ export const BookForm = () => {
           <button
             type="submit"
             onClick={sendDate}
+            disabled={!isDisablet}
             className={classNames('book__button', {
               book__disabled: !isDisablet,
             })}
-            // to={isDisablet ? '/' : ''}
-            // to="/book:successfully"
           >
             Next
           </button>

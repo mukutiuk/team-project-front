@@ -133,7 +133,7 @@ export const UserPage = () => {
             type="number"
           />
         </label>
-        <div className="user__label">
+        <div className="user__label user__label--change">
           Password
           <span
             onClick={() => {

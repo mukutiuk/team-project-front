@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
+  changeDescriptionProblem,
+  changeStatus,
+  getActiveOrders,
   getDataUser,
+  getNotActiveOrders,
+  getOwnOrders,
+  getSearchOrders,
   postFirstRegistartion,
   postLogin,
   putData,
@@ -13,6 +19,11 @@ export interface ProfilState {
   token: string;
   isSuccsess: boolean;
   dataUser: ProfilePutData | null;
+  content: OrderType[];
+  ownOrders: OrderType[];
+  notActiveOrde: OrderType[];
+  activeOrders: OrderType[];
+  totalElements: number;
 }
 
 export interface ProfilePutData {
@@ -24,6 +35,17 @@ export interface ProfilePutData {
   phoneNumber: string;
 }
 
+export interface OrderType {
+  description: string | null;
+  device: string;
+  id: string;
+  lastName: string;
+  name: string;
+  orderDate: string;
+  phoneNumber: string;
+  status: string;
+}
+
 const initialState: ProfilState = {
   isLoader: false,
   firstRequest: false,
@@ -31,7 +53,17 @@ const initialState: ProfilState = {
   token: '',
   isSuccsess: false,
   dataUser: null,
+  content: [],
+  activeOrders: [],
+  ownOrders: [],
+  notActiveOrde: [],
+  totalElements: 0,
 };
+
+export interface ChangeOrder {
+  id: number;
+  value: string;
+}
 
 export interface FetchFirstREgistartion {
   email: string;
@@ -65,9 +97,48 @@ export const fetchLogin = createAsyncThunk(
   },
 );
 
-export const getProfileData = createAsyncThunk('getGata/fetch', async () => {
+export const changeStatusOrder = createAsyncThunk(
+  'patchStatus/fetch',
+  (data: ChangeOrder) => {
+    return changeStatus(data);
+  },
+);
+
+export const changeDescription = createAsyncThunk(
+  'patchdescription/fetch',
+  (data: ChangeOrder) => {
+    return changeDescriptionProblem(data);
+  },
+);
+
+export const getProfileData = createAsyncThunk('getGata/fetch', () => {
   return getDataUser();
 });
+
+export const getProfileOrders = createAsyncThunk('getOwnOrders/fetch', () => {
+  return getOwnOrders();
+});
+
+export const getOrdersNotActive = createAsyncThunk(
+  'getOrdersNotActive/fetch',
+  () => {
+    return getNotActiveOrders();
+  },
+);
+
+export const getOrdersActive = createAsyncThunk(
+  'getOrdersActive/fetch',
+  (page: number) => {
+    return getActiveOrders(page);
+  },
+);
+
+export const getSerchQuery = createAsyncThunk(
+  'getSearch/fetch',
+  (value: string) => {
+    return getSearchOrders(value);
+  },
+);
 
 export const ProfileState = createSlice({
   name: 'text',
@@ -83,6 +154,37 @@ export const ProfileState = createSlice({
       return {
         ...state,
         isSuccsess: false,
+      };
+    },
+    changeOrderStatus: (state: ProfilState, action) => {
+      return {
+        ...state,
+        content: state.content.map(item => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              status: action.payload.value,
+            };
+          }
+
+          return item;
+        }),
+      };
+    },
+    filterActive: (state: ProfilState) => {
+      return {
+        ...state,
+        activeOrders: state.activeOrders.filter(
+          item => item.status !== 'COMPLETED',
+        ),
+      };
+    },
+    filterNotActive: (state: ProfilState) => {
+      return {
+        ...state,
+        notActiveOrde: state.notActiveOrde.filter(
+          item => item.status === 'COMPLETED',
+        ),
       };
     },
   },
@@ -162,8 +264,55 @@ export const ProfileState = createSlice({
         isLoader: false,
       };
     });
+    builder.addCase(changeStatusOrder.fulfilled, (state, action) => {
+      return {
+        ...state,
+        content: state.content.map(item => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              status: action.payload.status,
+            };
+          }
+
+          return item;
+        }),
+      };
+    });
+    builder.addCase(getProfileOrders.fulfilled, (state, action) => {
+      return {
+        ...state,
+        ownOrders: action.payload.content,
+      };
+    });
+    builder.addCase(getOrdersNotActive.fulfilled, (state, action) => {
+      return {
+        ...state,
+        notActiveOrde: action.payload.content,
+      };
+    });
+    builder.addCase(getSerchQuery.fulfilled, (state, action) => {
+      return {
+        ...state,
+        content: action.payload.content,
+      };
+    });
+
+    builder.addCase(getOrdersActive.fulfilled, (state, action) => {
+      return {
+        ...state,
+        activeOrders: action.payload.content,
+        totalElements: action.payload.totalElements,
+      };
+    });
   },
 });
 
 export default ProfileState.reducer;
-export const { changeError, changeSuccess } = ProfileState.actions;
+export const {
+  changeError,
+  changeSuccess,
+  changeOrderStatus,
+  filterActive,
+  filterNotActive,
+} = ProfileState.actions;

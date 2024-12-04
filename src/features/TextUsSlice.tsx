@@ -26,18 +26,18 @@ export const TextUsState = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    // builder.addCase(fetchPostTextUs.pending, () => {
-    //   // eslint-disable-next-line no-console
-    //   console.log('pendin');
-
-    //   return {
-    //     isLoader: true,
-    //   };
-    // });
+    builder.addCase(fetchPostTextUs.pending, () => {
+      return {
+        isLoader: true,
+      };
+    });
     builder.addCase(fetchPostTextUs.fulfilled, state => {
-      // eslint-disable-next-line no-console
-      console.log('ful');
-
+      return {
+        ...state,
+        isLoader: false,
+      };
+    });
+    builder.addCase(fetchPostTextUs.rejected, state => {
       return {
         ...state,
         isLoader: false,

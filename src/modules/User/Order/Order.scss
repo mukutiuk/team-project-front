@@ -3,66 +3,55 @@
 @import '../../../utils-scss/fonts.scss';
 
 
-.order {
-  width: 100%;
-  margin: 0 auto;
-  padding: 32px 16px;
-
-  @include on-desktop {
-    padding-top: 46px;
-    width: 1280px;
-  }
-
-  &__container {
-    position: relative;
-    &--active {
-      margin-bottom: 58px;
-
-      @include on-desktop {
-      margin-bottom: 187px;
-
-      }
-    }
-  }
-
+.bid {
   &__title {
     @extend %mont-700;
 
-    font-size: 26px;
-    line-height: 32px;
+    font-size: 44px;
+    line-height: 52px;
     color: $color-dark-purple;
     margin-bottom: 40px;
-
-    @include on-desktop {
-      font-size: 44px;
-    }
-  }
-
-  &__wraper {
-    display: flex;
-    flex-direction: column;
-    gap: 27px;
   }
 
   &__block {
-    width: 1280px;
-    height: 212px;
+    width: 100%;
+
     border:1px solid #087713;
     padding: 28px 48px 34px 32px;
     display: flex;
     justify-content: space-between;
+
+    @include on-desktop {
+      width: 1280px;
+      height: 212px;
+    }
   }
 
   &__frame {
     display: flex;
     flex-direction: column;
-    gap: 45px;
   }
 
   &__content {
     width: 235px;
     display: flex;
     gap: 32px;
+
+    &--type {
+      margin-bottom: 10px;
+
+      @include on-desktop {
+        margin-bottom: 45px;
+      }
+    }
+
+    &--problem {
+      margin-bottom: 21px;
+
+      @include on-desktop {
+        margin-bottom: 45px;
+      }
+    }
   }
 
   &__value {
@@ -94,13 +83,5 @@
     line-height: 15px;
     color: $color-black;
     text-align: end
-  }
-
-  &__ask {
-    @extend %mont-700;
-
-    font-size: 18px;
-    line-height: 25px;
-    color: $color-blue;
   }
 }

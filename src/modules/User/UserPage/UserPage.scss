@@ -3,26 +3,41 @@
 @import '../../../utils-scss/fonts.scss';
 
 .user {
-  padding-top: 58px;
+  padding: 25px 16px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @include on-desktop {
+    padding-top: 58px;
+
+  }
 
   &__frame {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 130px;
+    height: 130px;
     background-color: #f3f3f3;
     margin-bottom: 54px;
+
+    @include on-desktop {
+      width: 300px;
+      height: 300px;
+    }
   }
 
   &__img {
-    width: 144px;
-    height: 144px;
+    width: 72px;
+    height: 72px;
+
+    @include on-desktop {
+      width: 144px;
+      height: 144px;
+    }
   }
 
   &__name {
@@ -35,38 +50,56 @@
   }
 
   &__form {
-    width: 579px;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+
+    @include on-desktop {
+      width: 579px;
+
+    }
   }
 
   &__label {
     @extend %mont-400;
-    display: block;
-    // width: 125px;
-    font-size: 26px;
-    line-height: 32px;
-    color: $color-black;
     display: flex;
-    justify-content: space-between;
-    // gap: 99px;
-    margin-bottom: 53px;
-  }
-
-  &__input {
-    width: 354px;
-    height: 45px;
-    border-color: $color-grey;
-    border-radius: 5px;
-    padding-left: 23px;
-
-    @extend %mont-inter-400;
+    flex-direction: column;
 
     font-size: 16px;
     line-height: 38px;
     color: $color-black;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 53px;
+
+    &--change {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      flex-direction: row;
+      line-height: 32px;
+      font-size: 26px;
+    }
+  }
+
+  &__input {
+    @extend %mont-inter-400;
+
+    width: 100%;
+    height: 45px;
+    border-color: $color-grey;
+    border-radius: 5px;
+    padding-left: 23px;
+    font-size: 16px;
+    line-height: 38px;
+    color: $color-black;
+
+    @include on-desktop {
+      width: 354px;
+      height: 45px;
+    }
   }
 
   &__change {
@@ -85,7 +118,8 @@
   }
 
   &__button {
-    width: 190px;
+    width: 100%;
+
     height: 40px;
     background-color: $color-blue;
     border: none;
@@ -93,6 +127,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include on-desktop {
+    width: 190px;
+
+    }
 
     @extend %mont-700;
 

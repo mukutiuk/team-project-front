@@ -1,5 +1,6 @@
 import { BookStateFetch } from '../features/BookSlice';
 import {
+  ChangeOrder,
   FecthLoginState,
   FetchFirstREgistartion,
   ProfilePutData,
@@ -7,13 +8,7 @@ import {
 import { FetchText } from '../features/TextUsSlice';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'http://localhost:8082/api';
-
-function wait(delay: number) {
-  return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
-}
+const BASE_URL = 'http://51.21.0.161/api';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
 function request<T>(
@@ -30,15 +25,15 @@ function request<T>(
     };
   }
 
-  return wait(100)
-    .then(() => fetch(BASE_URL + url, options))
-    .then(response => {
-      if (!response.ok) {
-        throw new Error();
-      }
+  return fetch(BASE_URL + url, options).then(response => {
+    if (!response.ok) {
+      throw new Error();
+    }
 
-      return response.json();
-    });
+    const result = response.json();
+
+    return result;
+  });
 }
 
 function requestWithToken(
@@ -69,19 +64,20 @@ function requestWithToken(
       throw new Error();
     }
 
-    const result = response.json();
-
-    return result;
+    return response.json();
   });
 }
 
 export const client = {
   get: <T>(url: string) => request<T>(url, 'GET'),
   getWithToken: (url: string) => requestWithToken(url, 'GET'),
+  postWithToken: (url: string, data: any) =>
+    requestWithToken(url, 'POST', data),
 
   post: <T>(url: string, data: any) => request<T>(url, 'POST', data),
   delete: <T>(url: string) => request<T>(url, 'DELETE'),
   put: (url: string, data: any) => requestWithToken(url, 'PUT', data),
+  patch: (url: string, data: any) => requestWithToken(url, 'PATCH', data),
 };
 
 export const getProduct = () => {
@@ -109,7 +105,7 @@ export const getDetailProduct = (id: number) => {
 };
 
 export const postBook = (value: BookStateFetch) => {
-  return client.post('/orders', value);
+  return client.postWithToken('/orders', value);
 };
 
 export const postFirstRegistartion = (value: FetchFirstREgistartion) => {
@@ -126,4 +122,32 @@ export const putData = (value: ProfilePutData) => {
 
 export const getDataUser = () => {
   return client.getWithToken(`/profile`);
+};
+
+export const getOrdersForAdmin = () => {
+  return client.getWithToken(`/orders/active`);
+};
+
+export const changeStatus = ({ id, value }: ChangeOrder) => {
+  return client.patch(`/orders/${id}/status`, { status: value });
+};
+
+export const changeDescriptionProblem = ({ id, value }: ChangeOrder) => {
+  return client.patch(`/orders/${id}/description`, { description: value });
+};
+
+export const getOwnOrders = () => {
+  return client.getWithToken(`/orders/my`);
+};
+
+export const getSearchOrders = (value: string) => {
+  return client.getWithToken(`/orders/search?query=${value}`);
+};
+
+export const getNotActiveOrders = () => {
+  return client.getWithToken(`/orders/not-active`);
+};
+
+export const getActiveOrders = (page: number) => {
+  return client.getWithToken(`/orders/active?size=4&page=${page}`);
 };

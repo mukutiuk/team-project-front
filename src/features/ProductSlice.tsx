@@ -81,7 +81,7 @@ export const ProductsState = createSlice({
       .addCase(fetchProduct.fulfilled, (state: ProductState, action: any) => {
         return {
           ...state,
-          content: action.payload?.content,
+          content: action.payload,
         };
       })
       .addCase(fetchZipCode.fulfilled, (state: ProductState, action: any) => {

@@ -27,7 +27,12 @@ export const Footer = () => {
           <a className="footer__value footer__value--thambtack" href="">
             Thambtack
           </a>
-          <a className="footer__value footer__value--line" href="">
+          <a
+            target="_blank"
+            className="footer__value footer__value--line"
+            href="https://www.yelp.com/biz/o-k-repair-dunwoody"
+            rel="noreferrer"
+          >
             Yelp
           </a>
         </div>

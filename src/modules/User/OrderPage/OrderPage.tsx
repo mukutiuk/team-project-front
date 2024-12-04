@@ -1,33 +1,41 @@
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
 import './OrderPage.scss';
+import * as actionProfile from '../../../features/ProfileSlice';
+import { useEffect, useMemo } from 'react';
+import { Order } from '../Order/Order';
 
 export const OrderPage = () => {
+  const dispath = useAppDispatch();
+  const { ownOrders } = useAppSelector(state => state.profile);
+
+  useEffect(() => {
+    dispath(actionProfile.getProfileOrders());
+  }, [dispath]);
+
+  const activeOrders = useMemo(() => {
+    return ownOrders?.filter(item => item.status === 'COMPLETED');
+  }, [ownOrders]);
+
+  const notActiveOrders = useMemo(() => {
+    return ownOrders?.filter(item => item.status !== 'COMPLETED');
+  }, [ownOrders]);
+
   return (
     <div className="order">
-      <div className="order__container">
+      <div className="order__container order__container--active">
         <h1 className="order__title">Active</h1>
         <div className="order__wraper">
-          <div className="order__block">
-            <div className="order__frame">
-              <div className="order__content">
-                <span className="order__value">Type:</span>
-                <span className="order__description">Washer</span>
-              </div>
-              <div className="order__content">
-                <span className="order__value">Problem:</span>
-                <span className="order__description">Too much shaking</span>
-              </div>
-              <div className="order__content">
-                <span className="order__value">Status:</span>
-                <span className="order__description">Wainting on parts</span>
-              </div>
-            </div>
-            <div className="order__rules">
-              <p className="order__data">02/01/2024</p>
-              <a className="order__ask" href="">
-                Ask your technician a question
-              </a>
-            </div>
-          </div>
+          {notActiveOrders?.map(item => (
+            <Order key={item.orderDate} order={item} />
+          ))}
+        </div>
+      </div>
+      <div className="order__container">
+        <h1 className="order__title">Not Active</h1>
+        <div className="order__wraper">
+          {activeOrders?.map(item => (
+            <Order key={item.orderDate} order={item} />
+          ))}
         </div>
       </div>
     </div>

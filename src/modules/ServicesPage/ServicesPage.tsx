@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Slider from 'react-slick';
 import './ServicesPage.scss';
 import * as actionProduct from '../../features/ProductSlice';
@@ -49,7 +48,7 @@ export const ServicePage = () => {
           ))}
         </Slider>
       </div>
-      <NavLink to="/services/textUs" className="service__button">
+      <NavLink to="/book:zip" className="service__button">
         Schedule Now
       </NavLink>
     </section>

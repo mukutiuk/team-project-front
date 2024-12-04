@@ -1,0 +1,163 @@
+@import '../../../utils-scss/mixins';
+@import '../../../utils-scss/fonts.scss';
+@import '../../../utils-scss/variables';
+
+.orderer {
+  &__block {
+    width: 100%;
+
+    border:1px solid #087713;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-desktop {
+      width: 1280px;
+      padding: 28px 48px 34px 32px;
+
+    }
+  }
+
+  &__frame {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    display: flex;
+    gap: 10px;
+
+    @include on-desktop {
+      gap: 32px;
+      min-width: 235px;
+
+    }
+
+    &--type {
+      margin-bottom: 10px;
+
+      @include on-desktop {
+        margin-bottom: 45px;
+      }
+    }
+
+    &--problem {
+      margin-bottom: 21px;
+
+      @include on-desktop {
+        margin-bottom: 45px;
+      }
+    }
+  }
+
+  &__value {
+    @extend %mont-700;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: $color-dark-purple;
+  }
+
+  &__description {
+    @extend %mont-400;
+
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-black;
+    width: 90px;
+    word-break: normal;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    word-break: break-all;
+
+    @include on-desktop {
+      max-width: 200px;
+    }
+  }
+
+  &__rules {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__data {
+    @extend %mont-700;
+
+    font-size: 14px;
+    line-height: 15px;
+    color: $color-black;
+    text-align: end;
+    margin-bottom:10px;
+
+    @include on-desktop {
+      margin-bottom: 57px;
+    }
+  }
+
+  &__details {
+    @extend %mont-700;
+
+    font-size: 16px;
+    line-height: 25px;
+    color: $color-black;
+  }
+
+  &__contacts {
+    text-align: center;
+  }
+
+  &__name {
+    margin-bottom: 10px;
+
+    @include on-desktop {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__phone {
+    text-decoration: none;
+  }
+
+  &__change {
+    background-image: url(../../../../public/img/changeImg.svg);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__problem {
+    @extend %mont-400;
+
+    font-size: 16px;
+    color: $color-black;
+    padding: 5px;
+  }
+
+  &__list {
+    position: absolute;
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 10px;
+    z-index: 1;
+  }
+
+  &__item {
+    @extend %mont-400;
+    color: $color-black;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+}

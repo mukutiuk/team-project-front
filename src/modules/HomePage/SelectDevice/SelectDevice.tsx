@@ -10,6 +10,9 @@ export const SelectDevice = () => {
     dispatch(actionProduct.getProductDetailsData(id));
   };
 
+  // eslint-disable-next-line no-console
+  console.log(content);
+
   return (
     <div className="select">
       <h1 className="select__title">Select The Device That Needs Repair</h1>
@@ -17,7 +20,7 @@ export const SelectDevice = () => {
         Select the device that needs repair
       </h1>
       <div className="select__container">
-        {content?.map(item => (
+        {content.map(item => (
           <div key={item.id} className="select__wraper">
             <NavLink
               onClick={() => choseDevice(item.id)}

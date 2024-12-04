@@ -62,6 +62,12 @@ export const BookState = createSlice({
         isSuccsess: true,
       };
     });
+    builder.addCase(fetchBookPost.rejected, state => {
+      return {
+        ...state,
+        isSuccsess: true,
+      };
+    });
   },
 });
 

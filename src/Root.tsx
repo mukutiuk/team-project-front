@@ -22,6 +22,7 @@ import { UserPage } from './modules/User/UserPage';
 import { OrderPage } from './modules/User/OrderPage/OrderPage';
 import { BookEnd } from './modules/Book/BookEnd';
 import { ProtectedRoute } from './modules/SettingPages/ProtectedRoute';
+import { OrdersAdminPage } from './modules/SettingPages/OrdersAdminPage';
 
 export const Root = () => {
   return (
@@ -42,7 +43,8 @@ export const Root = () => {
               <Route path="/settings">
                 <Route index element={<ChoseSetting />} />
                 <Route path="/settings/zipCode" element={<SettingsPage />} />
-
+                <Route path="/settings/zipCode" element={<SettingsPage />} />
+                <Route path="/settings/orders" element={<OrdersAdminPage />} />
                 <Route path="/settings/addZip" element={<AddZipCod />} />
               </Route>
             </Route>
