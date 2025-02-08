@@ -5,7 +5,7 @@
   - [MOCKUP;](https://www.figma.com/design/wVTi9bfy4YaYksPhfFH5yQ/Repair-Web?node-id=740-319)
 
     Technologies were used:
-  In this project, I developed a phone catalog using modern web development technologies:
+  In this project, I developed a 'OK Repair' website using modern web development technologies:
 
   - **React**: Utilized React to build a dynamic and responsive user interface, allowing users to browse and filter phone models efficiently.
   - **TypeScript**: Integrated TypeScript for type safety and improved code quality, enhancing the development experience with better tooling and error checking.
