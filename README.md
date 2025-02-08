@@ -7,7 +7,8 @@
     Technologies were used:
   In this project, I developed a 'OK Repair' website using modern web development technologies:
 
-  - **React**: Utilized React to build a dynamic and responsive user interface, allowing users to browse and filter phone models efficiently.
+  - **React**: Utilized React to build a dynamic and responsive user interface, allowing users to browse and search products efficiently.
+
   - **TypeScript**: Integrated TypeScript for type safety and improved code quality, enhancing the development experience with better tooling and error checking.
   - **React Router**: Implemented React Router to manage navigation within the application, enabling a seamless user experience with multiple views and dynamic URL routing.
   - **HTML5**: Structured the website using semantic HTML5 elements to ensure accessibility and improve SEO performance.
