@@ -1,14 +1,16 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import './TextUs.scss';
 import * as actionText from '../../features/TextUsSlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import { Loader } from '../Loader';
+import { useNavigate } from 'react-router-dom';
 
 export const TextUs = () => {
   const [userEmail, setUserEmail] = useState('');
   const [message, setMessage] = useState('');
   const dispatch = useAppDispatch();
-  const { isLoader } = useAppSelector(state => state.text);
+  const navigate = useNavigate();
+  const { isLoader, isSuccsess } = useAppSelector(state => state.text);
   const submitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(actionText.fetchPostTextUs({ userEmail, message }));
@@ -17,13 +19,20 @@ export const TextUs = () => {
     setMessage('');
   };
 
+  useEffect(() => {
+    if (isSuccsess) {
+      dispatch(actionText.changeSuccessful());
+      navigate('/textSuccses');
+    }
+  }, [isSuccsess]);
+
   return (
     <>
       <div className="text">
         <h1 className="text__title">Text Us</h1>
         <p className="text__description">Contact our Team </p>
         <div className="text__line"></div>
-        <form className="text__" onSubmit={submitForm}>
+        <form className="text__form" onSubmit={submitForm}>
           <input
             onChange={e => setUserEmail(e.target.value)}
             value={userEmail}

@@ -14,8 +14,6 @@ export const FrequentlyAsked = () => {
             appointment.
           </p>
         </div>
-
-        <div className="question__img"></div>
       </div>
 
       <div className="question__frame">
@@ -27,8 +25,6 @@ export const FrequentlyAsked = () => {
             detalied quote before starting any work.
           </p>
         </div>
-
-        <div className="question__img"></div>
       </div>
 
       <div className="question__frame">
@@ -39,8 +35,6 @@ export const FrequentlyAsked = () => {
             technitian will provide you with more details after diagnostic.
           </p>
         </div>
-
-        <div className="question__img"></div>
       </div>
 
       <div className="question__frame question__frame--last">
@@ -50,8 +44,6 @@ export const FrequentlyAsked = () => {
             Yes, we provide a warranty for our repair services.
           </p>
         </div>
-
-        <div className="question__img"></div>
       </div>
       <div className="question__answer">
         <div className="question__container">

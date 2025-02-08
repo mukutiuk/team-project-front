@@ -3,7 +3,7 @@ import { App } from './App';
 import './App.scss';
 import { Footer } from './modules/Footer';
 import { HomePage } from './modules/HomePage/HomePage';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { NotFoundPage } from './modules/NotFoundPage';
 import { WhyUs } from './modules/WhyUs/WhyUs';
 import { ServicePage } from './modules/ServicesPage';
@@ -23,10 +23,13 @@ import { OrderPage } from './modules/User/OrderPage/OrderPage';
 import { BookEnd } from './modules/Book/BookEnd';
 import { ProtectedRoute } from './modules/SettingPages/ProtectedRoute';
 import { OrdersAdminPage } from './modules/SettingPages/OrdersAdminPage';
+import { ChangePassword } from './modules/User/ChangePassword';
+import { SuccessfulText } from './modules/SuccessfulText';
+import { SuccessfulChangePassword } from './modules/SuccessfulChangePassword';
 
 export const Root = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<App />}>
@@ -37,12 +40,16 @@ export const Root = () => {
                 <Route path="/user/profile" element={<UserPage />} />
                 <Route path="/user/orders" element={<OrderPage />} />
               </Route>
+              <Route path="/password" element={<ChangePassword />} />
+              <Route
+                path="/passwordSuccesful"
+                element={<SuccessfulChangePassword />}
+              />
             </Route>
             <Route path="/whyUs" element={<WhyUs />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/settings">
                 <Route index element={<ChoseSetting />} />
-                <Route path="/settings/zipCode" element={<SettingsPage />} />
                 <Route path="/settings/zipCode" element={<SettingsPage />} />
                 <Route path="/settings/orders" element={<OrdersAdminPage />} />
                 <Route path="/settings/addZip" element={<AddZipCod />} />
@@ -56,6 +63,7 @@ export const Root = () => {
                 element={<ServicesDetails />}
               />
             </Route>
+            <Route path="/textSuccses" element={<SuccessfulText />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
           <Route path="/book:zip" element={<BookZip />} />
@@ -65,6 +73,6 @@ export const Root = () => {
         </Routes>
         <Footer />
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };

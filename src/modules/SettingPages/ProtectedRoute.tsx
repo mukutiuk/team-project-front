@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 export const ProtectedRoute = () => {
-  const email = localStorage.getItem('email');
+  const email = sessionStorage.getItem('email');
 
-  const isEmail = email == '9@gmail.com';
+  const isEmail = email == 'admin@example.com';
 
   return isEmail ? <Outlet /> : <Navigate to="/" />;
 };

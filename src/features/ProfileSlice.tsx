@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   changeDescriptionProblem,
+  changePassword,
   changeStatus,
   getActiveOrders,
   getDataUser,
@@ -10,6 +11,7 @@ import {
   postFirstRegistartion,
   postLogin,
   putData,
+  sandPassword,
 } from '../utils/fetchClient';
 
 export interface ProfilState {
@@ -24,6 +26,7 @@ export interface ProfilState {
   notActiveOrde: OrderType[];
   activeOrders: OrderType[];
   totalElements: number;
+  isSendEmail: boolean;
 }
 
 export interface ProfilePutData {
@@ -58,6 +61,7 @@ const initialState: ProfilState = {
   ownOrders: [],
   notActiveOrde: [],
   totalElements: 0,
+  isSendEmail: false,
 };
 
 export interface ChangeOrder {
@@ -74,6 +78,11 @@ export interface FetchFirstREgistartion {
 export interface FecthLoginState {
   email: string;
   password: string;
+}
+
+export interface ChangePassword {
+  newPassword: string;
+  repeatPassword: string;
 }
 
 export const fetchFirstRegistration = createAsyncThunk(
@@ -137,6 +146,20 @@ export const getSerchQuery = createAsyncThunk(
   'getSearch/fetch',
   (value: string) => {
     return getSearchOrders(value);
+  },
+);
+
+export const requestPassword = createAsyncThunk(
+  'emailRequest/fetch',
+  (value: string) => {
+    return sandPassword(value);
+  },
+);
+
+export const sandNewPasswort = createAsyncThunk(
+  'newPassword/fetch',
+  (value: ChangePassword) => {
+    return changePassword(value);
   },
 );
 
@@ -303,6 +326,33 @@ export const ProfileState = createSlice({
         ...state,
         activeOrders: action.payload.content,
         totalElements: action.payload.totalElements,
+      };
+    });
+    builder.addCase(requestPassword.pending, state => {
+      return {
+        ...state,
+        isLoader: true,
+      };
+    });
+    builder.addCase(requestPassword.fulfilled, state => {
+      return {
+        ...state,
+        // isSendEmail: true,
+        isLoader: false,
+      };
+    });
+
+    builder.addCase(requestPassword.rejected, state => {
+      return {
+        ...state,
+        // isSendEmail: true,
+        isLoader: false,
+      };
+    });
+
+    builder.addCase(sandNewPasswort.fulfilled, state => {
+      return {
+        ...state,
       };
     });
   },

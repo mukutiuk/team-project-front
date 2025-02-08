@@ -10,9 +10,6 @@ export const SelectDevice = () => {
     dispatch(actionProduct.getProductDetailsData(id));
   };
 
-  // eslint-disable-next-line no-console
-  console.log(content);
-
   return (
     <div className="select">
       <h1 className="select__title">Select The Device That Needs Repair</h1>
@@ -29,7 +26,7 @@ export const SelectDevice = () => {
             >
               <img
                 className="select__img"
-                src={`http://localhost:8082/api${item?.imageUrl}`}
+                src={`https://my-sevice-images.s3.eu-north-1.amazonaws.com${item?.imageUrl}`}
                 alt="img"
               />
             </NavLink>

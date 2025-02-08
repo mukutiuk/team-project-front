@@ -1,38 +1,35 @@
+/* eslint-disable no-console */
 import { Link, useNavigate } from 'react-router-dom';
 import './BookZip.scss';
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
-import * as actionBook from '../../../features/BookSlice';
-import * as productAction from '../../../features/ProductSlice';
 
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import * as bookAction from '../../../features/BookSlice';
 
 export const BookZip = () => {
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(productAction.fetchZipCode());
-  }, [dispatch]);
-
   const [zipValue, setZipValue] = useState('');
-  const { zipCode } = useAppSelector(state => state.products);
-  const [isZipCode, setIsZipCode] = useState(true);
   const navigate = useNavigate();
+  const { isZipCode: isFindZipcode, nextSlice } = useAppSelector(
+    state => state.book,
+  );
+
+  console.log(nextSlice);
 
   const addZipBook = () => {
-    const findZipCode = zipCode.find(item => +item.zipCode === +zipValue);
-
-    if (findZipCode) {
-      setIsZipCode(true);
-      dispatch(actionBook.addZip(zipValue));
-      navigate('/book:devise');
-    } else {
-      setIsZipCode(false);
-    }
+    dispatch(bookAction.isZipCodeBook(zipValue.toString()));
   };
 
+  useEffect(() => {
+    if (nextSlice) {
+      dispatch(bookAction.cahangeSlice());
+      dispatch(bookAction.addZip(zipValue));
+      navigate('/book:devise');
+    }
+  }, [nextSlice]);
+
   const addValueZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsZipCode(true);
     setZipValue(e.target.value);
   };
 
@@ -40,7 +37,13 @@ export const BookZip = () => {
     <>
       <img className="zip__logo" src="../img/loogo.png" alt="" />
       <section className="zip">
-        <Link to="/" className="zip__close"></Link>
+        <Link
+          onClick={() => {
+            dispatch(bookAction.cahangeIsZipCode());
+          }}
+          to="/"
+          className="zip__close"
+        ></Link>
         <h1 className="zip__title">Book Online</h1>
         <p className="zip__description">
           Book our appointment with us today! Simply choose a convenient time,
@@ -56,29 +59,27 @@ export const BookZip = () => {
 
         <input
           value={zipValue}
-          onChange={e => addValueZipCode(e)}
+          onChange={e => {
+            addValueZipCode(e);
+            dispatch(bookAction.cahangeIsZipCode());
+          }}
           placeholder="___"
           className={classNames('zip__input', {
-            zip__not: !isZipCode,
+            zip__not: isFindZipcode,
           })}
           type="number"
         />
-        {!isZipCode && (
+        {isFindZipcode && (
           <p className="zip__error">Sorry we don&apos;t serve this area</p>
         )}
 
         <div className="zip__wraper">
-          <Link to="../" className="zip__button">
-            Back
-          </Link>
-          <button
-            onClick={addZipBook}
-            className={classNames('zip__button', {
-              zip__disabled: !zipValue,
-            })}
-          >
+          <button onClick={addZipBook} className="zip__button">
             Next
           </button>
+          <Link to="../" className="zip__button zip__disabled">
+            Back
+          </Link>
         </div>
       </section>
     </>

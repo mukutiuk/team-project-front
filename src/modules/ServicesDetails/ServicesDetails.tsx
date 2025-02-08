@@ -36,7 +36,7 @@ export const ServicesDetails = () => {
           <div key={item.id} className="services__block">
             <img
               className="services__img"
-              src={`http://localhost:8082/api${item?.imageUrl}`}
+              src={`https://my-sevice-images.s3.eu-north-1.amazonaws.com${item?.imageUrl}`}
               alt="img"
             />
             <span className="services__name">{item.name}</span>

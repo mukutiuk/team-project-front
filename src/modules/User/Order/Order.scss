@@ -2,7 +2,6 @@
 @import '../../../utils-scss/variables';
 @import '../../../utils-scss/fonts.scss';
 
-
 .bid {
   &__title {
     @extend %mont-700;
@@ -15,7 +14,6 @@
 
   &__block {
     width: 100%;
-
     border:1px solid #087713;
     padding: 28px 48px 34px 32px;
     display: flex;

@@ -2,10 +2,8 @@
 @import '../../../utils-scss/variables.scss';
 @import '../../../utils-scss/mixins';
 
-
 .zip {
   flex-grow: 1;
-  // height: 760px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -15,7 +13,6 @@
 
   @include on-desktop {
     width: 1340px;
-    border: 2px solid $color-blue;
     padding: 87px 0 60px 0;
   }
 
@@ -78,7 +75,11 @@
     font-size: 18px;
     line-height: 25px;
     color: #d71616;
-    margin-bottom: 165px;
+    margin-bottom: 30;
+
+    @include on-desktop {
+      margin-bottom: 165px;
+    }
   }
 
   &__description {
@@ -138,8 +139,12 @@
     padding-left: 21px;
     font-size: 16px;
     border-color: #1C557E;
-    margin-bottom: 200px;
     outline: none;
+    margin-bottom: 30px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
 
     &:focus {
       border: 2px solid #1c557e;
@@ -149,7 +154,6 @@
   &__not {
     border: 2px solid #d71616;
     margin-bottom: 10px;
-
   }
 
   &__wraper {
@@ -162,14 +166,14 @@
       gap: 0;
       width: 880px;
       justify-content: space-between;
-      flex-direction: row;
+      flex-direction: row-reverse;
     }
   }
 
   &__button {
     width: 100%;
     height: 40px;
-    background-color: $color-blue;
+    background-color: $color-blue-similar;
     border: none;
     border-radius: 5px;
     color: $color-white;
@@ -190,7 +194,6 @@
   }
 
   &__disabled {
-    background-color: #46699980;
-    cursor: default;
+    background-color: $color-blue;
   }
 }

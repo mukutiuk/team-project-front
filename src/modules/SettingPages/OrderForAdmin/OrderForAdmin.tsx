@@ -3,7 +3,6 @@ import { OrderType } from '../../../features/ProfileSlice';
 import './OrderForAdmin.scss';
 import * as profileAction from '../../../features/ProfileSlice';
 import { useAppDispatch } from '../../../utils/hooks';
-// import * as debounce from 'debounce';
 
 type Props = {
   order: OrderType;
@@ -18,7 +17,6 @@ export const OrderForAdmin: React.FC<Props> = ({ order }) => {
   );
 
   const dispath = useAppDispatch();
-
   const borderColor = order.status === 'COMPLETED';
 
   const chooseStatus = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {

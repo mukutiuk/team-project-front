@@ -1,14 +1,14 @@
 import { BookStateFetch } from '../features/BookSlice';
 import {
   ChangeOrder,
+  ChangePassword,
   FecthLoginState,
   FetchFirstREgistartion,
   ProfilePutData,
 } from '../features/ProfileSlice';
 import { FetchText } from '../features/TextUsSlice';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'http://51.21.0.161/api';
+const BASE_URL = 'https://afa0-51-21-0-161.ngrok-free.app/api';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
 function request<T>(
@@ -20,19 +20,19 @@ function request<T>(
 
   if (data) {
     options.body = JSON.stringify(data);
-    options.headers = {
-      'Content-Type': 'application/json',
-    };
   }
+
+  options.headers = {
+    'ngrok-skip-browser-warning': 'true',
+    'Content-Type': 'application/json',
+  };
 
   return fetch(BASE_URL + url, options).then(response => {
     if (!response.ok) {
       throw new Error();
     }
 
-    const result = response.json();
-
-    return result;
+    return response.json();
   });
 }
 
@@ -41,20 +41,23 @@ function requestWithToken(
   method: RequestMethod = 'GET',
   data: any = null,
 ) {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   const options: RequestInit = { method };
 
   if (data) {
     options.body = JSON.stringify(data);
-    options.headers = {
-      'Content-Type': 'application/json',
-    };
   }
 
   if (token) {
     options.headers = {
       Authorization: `Bearer ${token}`,
+      'ngrok-skip-browser-warning': 'true',
+      'Content-Type': 'application/json',
+    };
+  } else {
+    options.headers = {
+      'ngrok-skip-browser-warning': 'true',
       'Content-Type': 'application/json',
     };
   }
@@ -73,11 +76,12 @@ export const client = {
   getWithToken: (url: string) => requestWithToken(url, 'GET'),
   postWithToken: (url: string, data: any) =>
     requestWithToken(url, 'POST', data),
-
+  deleteWithToken: (url: string) => requestWithToken(url, 'DELETE'),
   post: <T>(url: string, data: any) => request<T>(url, 'POST', data),
   delete: <T>(url: string) => request<T>(url, 'DELETE'),
   put: (url: string, data: any) => requestWithToken(url, 'PUT', data),
   patch: (url: string, data: any) => requestWithToken(url, 'PATCH', data),
+  postEmail: <T>(url: string) => request<T>(url, 'POST'),
 };
 
 export const getProduct = () => {
@@ -85,15 +89,15 @@ export const getProduct = () => {
 };
 
 export const deleteZipCode = (zipCode: string) => {
-  return client.delete(`/admin/zipcodes/${zipCode}`);
+  return client.deleteWithToken(`/admin/zipcodes/${zipCode}`);
 };
 
 export const getZipCode = () => {
-  return client.get('/admin/zipcodes');
+  return client.getWithToken('/admin/zipcodes');
 };
 
 export const addZipCode = (zipCode: string) => {
-  return client.post('/admin/zipcodes', { zipCode });
+  return client.postWithToken('/admin/zipcodes', { zipCode });
 };
 
 export const postTextUs = (text: FetchText) => {
@@ -150,4 +154,18 @@ export const getNotActiveOrders = () => {
 
 export const getActiveOrders = (page: number) => {
   return client.getWithToken(`/orders/active?size=4&page=${page}`);
+};
+
+export const isCheckZipCode = (zipCode: string) => {
+  return client.post('/orders/check-zipcode?', { zipCode });
+};
+
+export const sandPassword = (value: string) => {
+  return client.postEmail(`/auth/password/reset-request?email=${value}`);
+};
+
+export const changePassword = (value: ChangePassword) => {
+  const token = sessionStorage.getItem('tokenPassword');
+
+  return client.post(`/auth/password/reset?token=${token}`, value);
 };

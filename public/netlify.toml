@@ -1,0 +1,5 @@
+[[redirects]]
+from="/api/*"
+to="http://51.21.0.161/api"
+status=200
+force = false

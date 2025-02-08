@@ -2,9 +2,9 @@
 @import '../../../utils-scss/variables.scss';
 @import '../../../utils-scss/mixins';
 
-
 .question {
   padding: 0 16px 35px;
+
   @include on-desktop {
     padding: 0 106px 100px 64px;
   }
@@ -23,7 +23,6 @@
       margin: 0 0 90px 46px;
       font-size: 40px;
       line-height: 25px;
-      // text-align: center
     }
 
     &--bottom {
@@ -32,9 +31,9 @@
       font-size: 21px;
       text-align: start;
       margin-bottom: 5px;
-      @include on-desktop {
-      margin: 0 0 20px;
 
+      @include on-desktop {
+        margin: 0 0 20px;
       }
     }
   }
@@ -54,7 +53,6 @@
 
     &--last {
       margin-bottom: 35px;
-
 
       @include on-desktop {
         margin-bottom: 100px;
@@ -85,22 +83,8 @@
     color: $color-grey;
     max-width: 720px;
 
-
     @include on-desktop {
     line-height: 26px;
-    }
-  }
-
-  &__img {
-    background-image: url(../../../../public/img/plus.svg);
-    background-repeat: no-repeat;
-    min-width: 24px;
-    min-height: 24px;
-    background-size: contain;
-
-    @include on-desktop {
-      width: 29px;
-      height: 29px;
     }
   }
 
@@ -125,8 +109,6 @@
       flex-direction: row;
       justify-content: space-between;
       gap: 0;
-      
-
     }
   }
 
@@ -139,7 +121,6 @@
       flex-direction: row;
     }
   }
-
 
   &__button {
     @extend %mont-700;
@@ -182,7 +163,6 @@
     border: 2px solid $color-blue;
     width: 100%;
     height: 45px;
-    
     transition: all 0.3s;
 
     &:hover {

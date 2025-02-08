@@ -75,9 +75,6 @@ export const BookDevice = () => {
         </div>
 
         <div className="device__wraper">
-          <Link to="/book:zip" className="device__button">
-            Back
-          </Link>
           <Link
             to={selectValue ? '/book:logIn' : ''}
             className={classNames('device__button', {
@@ -85,6 +82,9 @@ export const BookDevice = () => {
             })}
           >
             Next
+          </Link>
+          <Link to="/book:zip" className="device__button">
+            Back
           </Link>
         </div>
       </section>

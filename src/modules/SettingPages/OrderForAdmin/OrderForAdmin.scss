@@ -14,7 +14,6 @@
     @include on-desktop {
       width: 1280px;
       padding: 28px 48px 34px 32px;
-
     }
   }
 
@@ -30,7 +29,6 @@
     @include on-desktop {
       gap: 32px;
       min-width: 235px;
-
     }
 
     &--type {

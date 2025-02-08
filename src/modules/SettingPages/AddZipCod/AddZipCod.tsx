@@ -7,11 +7,6 @@ export const AddZipCod = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState('');
 
-  // const response = await fetch("https://example.org/post", {
-  //   body: JSON.stringify({ username: "example" }),
-  //   // ...
-  // });
-
   return (
     <div className="code">
       <h1 className="code__title">Zip Code</h1>

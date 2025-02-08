@@ -2,7 +2,6 @@
 @import '../../utils-scss/variables.scss';
 @import '../../utils-scss/mixins';
 
-
 .service {
   padding: 15px 16px 44px;
   flex-grow: 1;
@@ -10,7 +9,7 @@
   flex-direction: column;
 
   @include on-desktop {
-    padding: 107px 0 78px 50px;
+    padding: 107px 0 0 50px;
     flex-direction: row;
   }
 
@@ -52,7 +51,7 @@
     color: $color-grey;
 
     @include on-desktop {
-      margin-bottom: 45px;
+      margin-bottom: 6px;
       font-size: 30px;
       line-height: 36px;
     }
@@ -74,8 +73,7 @@
     height: 50px;
     border-radius: 5px;
     transition: all 0.3s;
-    // order: 6;
-    margin-top: 100px;
+    margin-top: 50px;
     transition: all 0.3s;
 
     &:hover {
@@ -93,12 +91,11 @@
   &__slider {
     overflow: hidden;
     max-width: 650px;
-    // order: 8;
     height: 427px;
-    // margin: 0 auto;
 
     @include on-desktop {
       width: 650px;
+      margin-top: 70px;
     }
   }
 

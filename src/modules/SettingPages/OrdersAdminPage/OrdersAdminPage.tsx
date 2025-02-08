@@ -14,7 +14,7 @@ export const OrdersAdminPage = () => {
 
   const debounceSearch = debounce(() => {
     dispath(profileActon.getSerchQuery(search));
-  }, 1000);
+  }, 2000);
   const PAGE = 4;
 
   useEffect(() => {

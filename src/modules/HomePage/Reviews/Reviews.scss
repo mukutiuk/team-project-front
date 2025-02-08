@@ -2,8 +2,6 @@
 @import '../../../utils-scss/mixins';
 @import '../../../utils-scss/fonts.scss';
 
-
-
 .reviews {
   padding: 20px 16px;
   background-color: $color-white-smoke;
@@ -12,8 +10,6 @@
   @include on-desktop {
     padding: 108px 0 49px;
     margin-bottom: 110px;
-
-
   }
 
   &__container {
@@ -28,7 +24,6 @@
     align-items: center;
     gap: 35px;
     margin-bottom: 50px;
-
 
     @include on-desktop {
       margin-bottom: 157px;
@@ -56,10 +51,8 @@
     color: $color-black;
 
     @include on-desktop {
-      
     font-size: 50px;
     line-height: 25px;
-
     }
   }
 
@@ -121,6 +114,7 @@
     font-size: 18px;
     line-height: 25px;
     width: 228px;
+    text-align: start;
 
     @include on-desktop{
       width: 280px;

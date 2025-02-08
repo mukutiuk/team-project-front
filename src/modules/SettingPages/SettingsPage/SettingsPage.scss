@@ -4,10 +4,9 @@
 
 .setting {
   flex-grow: 1;
-  // padding: 0 10px;
+  padding: 20px 0 26px;
   margin: 0 16px;
 
-  
   @include on-desktop {
     padding: 86px 0 105px;
     width: 1330px;
@@ -28,10 +27,12 @@
     flex-flow: wrap;
     gap: 25px;
     margin-bottom: 35px;
+    justify-content: center;
 
     @include on-desktop {
       gap: 35px;
       margin-bottom: 105px;
+      justify-content: start;
     }
   }
 
@@ -43,7 +44,6 @@
     justify-content: center;
     align-items: center;
     width: 95px;
-
 
     @include on-desktop {
       width: 103px;

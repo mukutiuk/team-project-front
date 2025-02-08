@@ -2,17 +2,20 @@ import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
 import './SettingsPage.scss';
 import * as productAction from '../../../features/ProductSlice';
+import { useEffect } from 'react';
 
 export const SettingsPage = () => {
   const { zipCode } = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
 
   const deleteZipCode = (value: productAction.Zip) => {
-    // eslint-disable-next-line no-console
-    console.log(value);
     dispatch(productAction.deleteZipcode(value.zipCode));
     dispatch(productAction.fetchDeleteZipCode(value.zipCode.toString()));
   };
+
+  useEffect(() => {
+    dispatch(productAction.fetchZipCode());
+  }, [dispatch]);
 
   return (
     <div className="setting">

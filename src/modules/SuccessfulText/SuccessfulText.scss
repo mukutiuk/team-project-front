@@ -1,8 +1,8 @@
-@import '../../../utils-scss/mixins';
-@import '../../../utils-scss/fonts.scss';
-@import '../../../utils-scss/variables';
+@import '../../utils-scss/mixins';
+@import '../../utils-scss/fonts.scss';
+@import '../../utils-scss/variables';
 
-.end {
+.succes {
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -12,10 +12,9 @@
   margin-bottom: 80px;
   flex-grow: 1;
 
-
   @include on-desktop {
     width: 1340px;
-    padding: 54px 0 60px 0;
+    padding: 154px 0 60px 0;
   }
 
   &__logo {
@@ -30,7 +29,7 @@
   }
 
   &__close {
-    background-image: url(../../../../public/img/Close-dark.svg);
+    background-image: url(../../../public/img/Close-dark.svg);
     background-repeat: no-repeat;
     background-color: initial;
     background-size: contain;
@@ -56,7 +55,7 @@
   &__img {
     width: 174px;
     height: 174px;
-    background-image: url(../../../../public/img/done.png);
+    background-image: url(../../../public/img/done.png);
     margin-bottom: 39px;
   }
 

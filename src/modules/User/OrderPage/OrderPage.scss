@@ -2,7 +2,6 @@
 @import '../../../utils-scss/variables';
 @import '../../../utils-scss/fonts.scss';
 
-
 .order {
   width: 100%;
   margin: 0 auto;
@@ -19,8 +18,7 @@
       margin-bottom: 58px;
 
       @include on-desktop {
-      margin-bottom: 187px;
-
+        margin-bottom: 187px;
       }
     }
   }

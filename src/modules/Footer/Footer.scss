@@ -6,10 +6,9 @@
   padding: 106px 36px 15px 25px;
   background:linear-gradient($color-white, $color-blue);
   position: relative;
-  // height: 224px;
 
   @include on-desktop {
-  padding: 120px 136px 41px 45px;
+    padding: 120px 136px 41px 45px;
   }
 
   &__logo {
@@ -32,6 +31,7 @@
     @include on-desktop {
       justify-content: space-between;
       gap: 0;
+      flex-direction: row;
     }
   }
 
@@ -40,12 +40,10 @@
     gap: 5px;
     flex-direction: column;
 
-
     @include on-desktop {
       flex-direction: row;
       gap: 10px;
     }
-
   }
 
   &__frame {
@@ -79,12 +77,10 @@
     }
 
     &--thambtack {
-      // margin-bottom: 30px;
       display: block;
 
       @include on-desktop {
-      margin-bottom: 30px;
-
+        margin-bottom: 30px;
       }
     }
   }

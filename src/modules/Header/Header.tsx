@@ -17,18 +17,19 @@ export const Header = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [changeEmail, setChangeEmail] = useState('');
   const { isLoader, firstRequest, isError, isSuccsess, token } = useAppSelector(
     state => state.profile,
   );
   const navigate = useNavigate();
 
-  const isToken = localStorage.getItem('token');
-  const emailUser = localStorage.getItem('email');
-  const isEmail = emailUser === '9@gmail.com';
+  const isToken = sessionStorage.getItem('token');
+  const emailUser = sessionStorage.getItem('email');
+  const isEmail = emailUser === 'admin@example.com';
 
   useEffect(() => {
     if (token) {
-      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
     }
   }, [token]);
 
@@ -37,7 +38,6 @@ export const Header = () => {
 
   useEffect(() => {
     dispatch(productAction.fetchProduct());
-    dispatch(productAction.fetchZipCode());
     dispatch(profileAction.changeError());
   }, [dispatch]);
 
@@ -68,7 +68,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (firstRequest) {
-      localStorage.setItem('email', email);
+      sessionStorage.setItem('email', email);
       dispatch(profileAction.fetchLogin({ email, password }));
     }
 
@@ -82,7 +82,7 @@ export const Header = () => {
     e.preventDefault();
     dispatch(profileAction.changeError());
 
-    if (!isFirstTimes) {
+    if (isFirstTimes) {
       if (password !== repeatPassword) {
         return;
       }
@@ -100,7 +100,7 @@ export const Header = () => {
       );
     } else {
       if (isToFillFormLog) {
-        localStorage.setItem('email', email);
+        sessionStorage.setItem('email', email);
         dispatch(profileAction.fetchLogin({ email, password }));
         setEmail('');
         setPassword('');
@@ -108,6 +108,15 @@ export const Header = () => {
         getOpenMenu();
       }
     }
+  };
+
+  const sandEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!changeEmail) {
+      return;
+    }
+
+    e.preventDefault();
+    dispatch(profileAction.requestPassword(changeEmail));
   };
 
   return (
@@ -207,103 +216,89 @@ export const Header = () => {
       <button onClick={getOpenMenu} className="header__button"></button>
       {isOpenLogin && (
         <div className="login">
-          <div className="login__container">
-            <button
-              onClick={() => {
-                setIsOpenLoadin(false);
-                dispatch(profileAction.changeError());
-                getCloseMenu();
-              }}
-              className="login__close"
-            ></button>
+          <div className="login__feild">
+            <div className="login__container">
+              <button
+                onClick={() => {
+                  setIsOpenLoadin(false);
+                  dispatch(profileAction.changeError());
+                  getCloseMenu();
+                }}
+                className="login__close"
+              ></button>
 
-            <h2 className="login__header">
-              {isFirstTimes ? 'Wellcome Back!' : 'Registration!'}
-            </h2>
-            <form onSubmit={e => onSubmit(e)} className="login__form">
-              <label className="login__name">
-                E-mail
-                <input
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="Your Email Address"
-                  className="login__input"
-                  name="email"
-                  type="email"
-                />
-              </label>
-              <label
-                className="login__name login__name--password"
-                style={isFirstTimes ? { marginBottom: '19px' } : {}}
-              >
-                Password
-                <input
-                  style={isFirstTimes ? { marginBottom: '15px' } : {}}
-                  placeholder="Create your password"
-                  className="login__input"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                />
-                {isFirstTimes && (
-                  <p
-                    onClick={() => setIsForgotPassword(true)}
-                    className="login__forgot"
-                  >
-                    Forgot yout password?
-                  </p>
-                )}
-              </label>
-              {!isFirstTimes && (
+              <h2 className="login__header">
+                {!isFirstTimes ? 'Welcome Back!' : 'Registration!'}
+              </h2>
+              <form onSubmit={e => onSubmit(e)} className="login__form">
                 <label className="login__name">
-                  Re-enter password
+                  E-mail
                   <input
-                    placeholder="Re-enter password"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder="Your Email Address"
                     className="login__input"
                     name="email"
-                    type="password"
-                    value={repeatPassword}
-                    onChange={e => setRepeatPassword(e.target.value)}
+                    type="email"
                   />
                 </label>
-              )}
-              {isError && (
-                <span className="login__error">Something went wrong</span>
-              )}
-              <button type="submit" className="login__log">
-                {isLoader ? <Loader /> : 'LogIn'}
-              </button>
-            </form>
-            <div className="login__wraper">
-              <div className="login__line"></div>
-              <h4 className="login__text">or</h4>
-              <div className="login__line"></div>
-            </div>
-            <a
-              // eslint-disable-next-line max-len
-              href="https://accounts.google.com/o/oauth2/v2/auth?client_id=461017604859-i5btvstnov6iapj1o1iqa1nfe73ras60.apps.googleusercontent.com&redirect_uri=http://localhost:8080/api/login/oauth2/code/google&response_type=code&scope=email%20profile&access_type=online"
-              className="login__button"
-            >
-              <div className="login__img"></div>
-              <p className="login__description">LogIn with Google</p>
-            </a>
-            <a className="login__button">
-              <div className="login__img login__img--facebook"></div>
-              <p className="login__description">LogIn with Facebook</p>
-            </a>
-            <a className="login__button">
-              <div className="login__img login__img--apple"></div>
-              <p className="login__description">LogIn with Apple</p>
-            </a>
-            <div className="login__blok">
-              <h2 className="login__ask">Already have an account?</h2>
-              <span
-                onClick={() => setIsFirstTimes(!isFirstTimes)}
-                className="login__logIn"
-              >
-                {isFirstTimes ? 'Regestration' : 'LogIn'}
-              </span>
+                <label
+                  className="login__name login__name--password"
+                  style={isFirstTimes ? { marginBottom: '19px' } : {}}
+                >
+                  Password
+                  <input
+                    style={isFirstTimes ? { marginBottom: '15px' } : {}}
+                    placeholder="Create your password"
+                    className="login__input"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                  />
+                  {!isFirstTimes && (
+                    <p
+                      onClick={() => setIsForgotPassword(true)}
+                      className="login__forgot"
+                    >
+                      Forgot yout password?
+                    </p>
+                  )}
+                </label>
+                {isFirstTimes && (
+                  <label className="login__name">
+                    Re-enter password
+                    <input
+                      placeholder="Re-enter password"
+                      className="login__input"
+                      name="email"
+                      type="password"
+                      value={repeatPassword}
+                      onChange={e => setRepeatPassword(e.target.value)}
+                    />
+                  </label>
+                )}
+                {isError && (
+                  <span className="login__error">Something went wrong</span>
+                )}
+                <button type="submit" className="login__log">
+                  {isLoader ? <Loader /> : 'LogIn'}
+                </button>
+              </form>
+              <div className="login__wraper">
+                <div className="login__line"></div>
+                <h4 className="login__text">or</h4>
+                <div className="login__line"></div>
+              </div>
+              <div className="login__blok">
+                <h2 className="login__ask">Already have an account?</h2>
+                <span
+                  onClick={() => setIsFirstTimes(!isFirstTimes)}
+                  className="login__logIn"
+                >
+                  {!isFirstTimes ? 'Registration' : 'LogIn'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -320,13 +315,17 @@ export const Header = () => {
               className="password__close"
             ></div>
             <h1 className="send__title">Forgot password</h1>
-            <form className="send__form">
-              <label className="password__label send__label">
-                Your e-mail
-                <input className="password__input" type="email" />
-              </label>
-              <button className="password__button send__button">
-                Re-send password
+            <form onSubmit={sandEmail} className="send__form">
+              <input
+                placeholder="Your e-mail"
+                value={changeEmail}
+                required
+                className="input"
+                type="email"
+                onChange={e => setChangeEmail(e.target.value)}
+              />
+              <button type="submit" className="password__button">
+                {isLoader ? <Loader /> : 'Send email'}
               </button>
             </form>
           </div>

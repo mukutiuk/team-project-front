@@ -3,25 +3,17 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  
 }
 
-// iframe {
-//   display: none;
-// }
-
 .App {
-  // flex: 1;
   min-height: 67vh;
   margin: 0;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
 }
 
 #root {
   min-height: 100vh;
-  // margin: 0;
   display: flex;
   flex-direction: column;
 }

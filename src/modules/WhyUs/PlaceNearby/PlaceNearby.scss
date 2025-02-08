@@ -2,7 +2,6 @@
 @import '../../../utils-scss/variables.scss';
 @import '../../../utils-scss/mixins';
 
-
 .place {
   padding: 40px 16px 58px;
   margin: auto;
@@ -20,9 +19,7 @@
     color: #313131;
 
     @include on-desktop {
-    font-size: 50px;
-
-
+      font-size: 50px;
     }
 
     &--block {
@@ -66,7 +63,6 @@
       height: 60px;
       margin-bottom: 16px;
     }
-
 
     &:last-child {
       margin: 0;

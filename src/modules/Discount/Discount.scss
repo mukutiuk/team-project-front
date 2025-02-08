@@ -1,20 +1,17 @@
 @import '../../utils-scss/variables.scss';
 @import '../../utils-scss/fonts.scss';
 
-
 .discount {
   padding-top: 28px;
   display: flex;
   justify-content: center;
   gap: 62px;
-  // flex-grow: 1;
 
   &__container {
     padding-top: 110px  ;
     display: flex;
     flex-direction: column;
     gap: 69px;
-
   }
 
   &__tiket {
@@ -67,7 +64,6 @@
     height: 100%;
     width: 283px;
     display: flex;
-    // align-items: center;
     padding-left: 20px;
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;

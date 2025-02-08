@@ -5,15 +5,19 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import * as bookAction from '../../../features/BookSlice';
 import { useAppDispatch, useAppSelector } from '../../../utils/hooks';
+import * as profileAction from '../../../features/ProfileSlice';
 
 export const BookForm = () => {
-  const [nameValue, setNameValue] = useState('');
-  const [lastNameValue, setLastNameValue] = useState('');
-  const [emailValue, setEmailValue] = useState('');
-  const [adresValue, setAdresValue] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const { dataUser } = useAppSelector(state => state.profile);
+
+  const [nameValue, setNameValue] = useState(dataUser?.name || '');
+  const [lastNameValue, setLastNameValue] = useState(dataUser?.lastName || '');
+  const [emailValue, setEmailValue] = useState(dataUser?.email || '');
+  const [adresValue, setAdresValue] = useState(dataUser?.address || '');
+  const [phoneNumber, setPhoneNumber] = useState(dataUser?.phoneNumber || '');
   const dispatch = useAppDispatch();
   const { deviceId, zipCode, isSuccsess } = useAppSelector(state => state.book);
+
   const navigate = useNavigate();
 
   const isDisablet =
@@ -38,6 +42,10 @@ export const BookForm = () => {
       }),
     );
   };
+
+  useEffect(() => {
+    dispatch(profileAction.getProfileData());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isSuccsess) {
@@ -140,9 +148,6 @@ export const BookForm = () => {
         </div>
 
         <div className="book__buttons">
-          <Link to="/book:devise" className="book__button">
-            Back
-          </Link>
           <button
             type="submit"
             onClick={sendDate}
@@ -153,6 +158,9 @@ export const BookForm = () => {
           >
             Next
           </button>
+          <Link to="/book:devise" className="book__button">
+            Back
+          </Link>
         </div>
       </div>
     </>

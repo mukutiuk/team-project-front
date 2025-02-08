@@ -41,7 +41,7 @@ export const ServicePage = () => {
             >
               <img
                 className="service__img"
-                src={`http://localhost:8082/api${item.imageUrl}`}
+                src={`https://my-sevice-images.s3.eu-north-1.amazonaws.com${item.imageUrl}`}
                 alt="img"
               />
             </NavLink>

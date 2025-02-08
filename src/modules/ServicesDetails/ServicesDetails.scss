@@ -2,17 +2,13 @@
 @import '../../utils-scss/fonts.scss';
 @import '../../utils-scss/mixins';
 
-
 .services {
   margin: 0 auto;
-
   padding: 20px 16px 0;
 
   @include on-desktop {
     padding-top: 100px;
-
     width: 1260px;
-
   }
 
   &__title {
@@ -28,7 +24,6 @@
       font-size: 50px;
       line-height: 25px;
       margin-bottom: 175px;
-
     }
   }
 
@@ -60,7 +55,6 @@
     @include on-desktop {
       width: 239px;
       height: 250px;
-
     }
   }
 
@@ -102,7 +96,6 @@
   &__wraper {
     display: flex;
     width: 100%;
-    // gap: 10px;
     justify-content: space-between;
 
     @include on-desktop {
@@ -114,17 +107,14 @@
 
       @include on-desktop {
         width: 1085px;
-
       }
     }
 
     &--third{
       justify-content: space-between;
 
-
       @include on-desktop {
         width: 1147px;
-
       }
     }
   }
@@ -136,5 +126,4 @@
     align-items: center;
     margin-bottom: 110px;
   }
-
 }

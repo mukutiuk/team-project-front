@@ -2,7 +2,6 @@
 @import '../../../utils-scss/variables';
 @import '../../../utils-scss/fonts.scss';
 
-
 .orders {
   width: 100%;
   margin: 0 auto;
@@ -101,7 +100,6 @@
   &__rules {
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
   }
 
   &__data {

@@ -3,17 +3,23 @@
 @import '../../../utils-scss/fonts.scss';
 
 .choses {
-  display: flex;
-  gap: 24px;
-  flex-direction: column;
-  width: 100%;
-  padding: 144px 16px 0;
+  flex-grow: 1;
 
-  @include on-desktop {
-    width: min-content;
-    gap: 60px;
-    margin: 165px auto 0;
-    flex-direction: row;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 144px 16px 0;
+    gap: 31px;
+    margin-bottom: 31px;
+
+    @include on-desktop {
+      width: min-content;
+      gap: 60px;
+      margin: 116px auto 117px;
+      flex-direction: row;
+      padding: 0;
+    }
   }
 
   &__button {
@@ -32,7 +38,7 @@
 
     font-size: 18px;
     line-height: 25px;
-    
+
     &:hover {
       box-shadow: 0px 4px 4px 0px #00000040 inset;
       transform: scale(1.03);
@@ -42,5 +48,15 @@
       width: 389px;
       height: 89px;
     }
+  }
+
+  &__logout {
+    @extend %mont-500;
+
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    line-height: 25px;
+    color: $color-black;
   }
 }

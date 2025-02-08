@@ -6,15 +6,6 @@ export const Main = () => {
   const [isOpenCupon, setIsOpenCupon] = useState(false);
   const body = document.querySelector('#menu');
 
-  // const openCupon = () => {
-  //   setIsOpenCupon(true);
-
-  //   if (body) {
-  //     body.classList.add('body');
-  //     body.setAttribute('id', 'menu');
-  //   }
-  // };
-
   const closeCupon = () => {
     setIsOpenCupon(false);
 
@@ -22,9 +13,6 @@ export const Main = () => {
       body.classList.remove('body');
     }
   };
-
-  // eslint-disable-next-line no-console
-  // console.log(openCupon);
 
   return (
     <section className="main">
@@ -57,7 +45,9 @@ export const Main = () => {
             <h2 className="main__title">Atlanta,GA</h2>
             <h1 className="main__logo">Appliance Repair</h1>
             <div className="main__description">Same-Day Service Available!</div>
-            <span className="main__description">Call Today:</span>
+            <span className="main__description main__description--call">
+              Call Today:
+            </span>
             <a className="main__phone main__description" href="tel:+4709091879">
               470-909-1879
             </a>
